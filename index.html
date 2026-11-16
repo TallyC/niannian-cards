@@ -1,0 +1,1545 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f3ecdf">
+<title>念念 · 記憶卡</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="念念">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" id="favicon" href="data:,">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<style>
+:root{
+  --bg:#f3ecdf;--surface:#fbf7ef;--raise:#fffdf8;--ink:#2a241d;--muted:#8c8070;--faint:#b9ad99;
+  --accent:#a3392b;--accent-ink:#fffaf2;--gold:#b58a3c;--line:#e2d6c0;--soft:#ece3d1;
+  --ok:#4c7a4f;--mid:#b2832e;--bad:#a3392b;--shadow:0 1px 0 rgba(255,255,255,.7) inset,0 18px 40px -18px rgba(80,55,20,.35),0 2px 6px rgba(80,55,20,.08);
+  --tex:.06;
+  --size:38px;--lh:1.7;--para:.8em;--align:center;--wm:horizontal-tb;
+  --font:'Noto Serif TC',serif;--kai:'LXGW WenKai TC','Noto Serif TC',serif;--sans:'Noto Sans TC',system-ui,sans-serif;
+  --safe-b:env(safe-area-inset-bottom,0px);--safe-t:env(safe-area-inset-top,0px);
+}
+body[data-theme=ink]{--bg:#121417;--surface:#1b1e23;--raise:#21252b;--ink:#ece4d2;--muted:#8d9098;--faint:#5a5e66;--accent:#c9a25a;--accent-ink:#15171a;--gold:#c9a25a;--line:#2d3138;--soft:#262a31;--ok:#86b07e;--mid:#d1a457;--bad:#d06a5c;--shadow:0 1px 0 rgba(255,255,255,.04) inset,0 22px 44px -20px rgba(0,0,0,.8);--tex:.08}
+body[data-theme=umber]{--bg:#e7d9c4;--surface:#f2e8d8;--raise:#faf4ea;--ink:#3b2a1c;--muted:#8a6f58;--faint:#b9a28a;--accent:#7a4a2a;--accent-ink:#faf4ea;--gold:#a8763f;--line:#d6c3a6;--soft:#e2d3bb;--ok:#5f7a4a;--mid:#a8763f;--bad:#9b3b2c;--shadow:0 1px 0 rgba(255,255,255,.6) inset,0 18px 40px -18px rgba(70,40,15,.4);--tex:.07}
+body[data-theme=stone]{--bg:#dcdedf;--surface:#eceef0;--raise:#f7f8f9;--ink:#262a2e;--muted:#6b7279;--faint:#a7adb3;--accent:#4a5a66;--accent-ink:#f7f8f9;--gold:#7d8790;--line:#c7cbd0;--soft:#d4d7db;--ok:#4f6b57;--mid:#8a7a55;--bad:#9b4a44;--shadow:0 1px 0 rgba(255,255,255,.7) inset,0 18px 40px -18px rgba(30,35,40,.35);--tex:.05}
+body[data-theme=albion]{--bg:#d6e1ec;--surface:#e9f0f7;--raise:#f6f9fc;--ink:#132a44;--muted:#55708c;--faint:#9fb4c8;--accent:#1f4e79;--accent-ink:#f6f9fc;--gold:#a8893f;--line:#bccddd;--soft:#cddbe8;--ok:#3d6b5a;--mid:#9a7a2f;--bad:#9a3a33;--shadow:0 1px 0 rgba(255,255,255,.75) inset,0 18px 40px -18px rgba(15,40,70,.35);--tex:.05}
+body[data-theme=celadon]{--bg:#dfe9e2;--surface:#f4f8f4;--raise:#fbfdfb;--ink:#1d3127;--muted:#62806e;--faint:#9fb8a8;--accent:#2e6f57;--accent-ink:#f4f8f4;--gold:#9a7b33;--line:#c6d9cc;--soft:#d6e4da;--ok:#2e6f57;--mid:#a5822f;--bad:#a8423a;--shadow:0 1px 0 rgba(255,255,255,.8) inset,0 18px 40px -18px rgba(20,60,40,.3);--tex:.05}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6;min-height:100vh;transition:background .4s,color .4s}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:var(--tex);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+button,input,select,textarea{font:inherit;color:inherit}
+input,select,textarea{font-size:16px!important}
+.toast{max-width:calc(100vw - 24px);white-space:normal;text-align:center}
+.row .btn{flex:none;white-space:nowrap}
+#mask{padding-bottom:calc(12px + var(--safe-b))}
+button{cursor:pointer}
+.wrap{position:relative;z-index:1;max-width:620px;margin:0 auto;padding:calc(14px + var(--safe-t)) 18px calc(100px + var(--safe-b))}
+.view{display:none;animation:fade .35s ease}.view.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* masthead */
+.mast{display:flex;align-items:center;gap:12px;margin:4px 0 22px}
+.mast .logo{width:40px;height:40px;border-radius:10px;overflow:hidden;flex:none;box-shadow:0 4px 12px -4px rgba(0,0,0,.3)}
+.mast .logo svg{display:block;width:100%;height:100%}
+.mast h1{margin:0;font-family:var(--kai);font-weight:700;font-size:26px;letter-spacing:.18em;line-height:1}
+.mast h1 small{display:block;font-family:var(--sans);font-weight:400;font-size:11px;letter-spacing:.32em;color:var(--muted);margin-top:6px}
+.mast .sp{flex:1}
+.iconbtn{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--surface);display:grid;place-items:center;color:var(--ink)}
+.iconbtn svg{width:18px;height:18px}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:end;padding:6px 2px 22px;border-bottom:1px solid var(--line);margin-bottom:20px}
+.hero .day{font-family:var(--kai);font-size:76px;line-height:.9;font-weight:700;letter-spacing:.02em}
+.hero .md{font-family:var(--kai);font-size:16px;color:var(--muted);letter-spacing:.3em;margin-top:10px}
+.hero .quote{font-family:var(--kai);font-size:14px;color:var(--muted);margin-top:14px;letter-spacing:.08em}
+.ring{position:relative;width:118px;height:118px}
+.ring svg{transform:rotate(-90deg)}
+.ring .c{position:absolute;inset:0;display:grid;place-content:center;text-align:center}
+.ring b{font-family:var(--kai);font-size:34px;line-height:1}
+.ring span{font-size:11px;color:var(--muted);letter-spacing:.2em;margin-top:4px}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);margin-bottom:22px}
+.trio div{text-align:center;border-left:1px solid var(--line)}.trio div:first-child{border-left:0}
+.trio b{display:block;font-family:var(--kai);font-size:26px;line-height:1.2}
+.trio span{font-size:11px;color:var(--muted);letter-spacing:.2em}
+.cta{display:flex;gap:10px;margin-bottom:26px}
+.btn{border:1px solid var(--line);background:var(--surface);padding:10px 16px;border-radius:12px;font-weight:500;transition:transform .15s,border-color .2s;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.btn:active{transform:scale(.97)}
+.btn.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.big{flex:1;padding:16px;font-family:var(--kai);font-size:19px;letter-spacing:.15em;border-radius:16px}
+.btn.sm{padding:6px 11px;font-size:13px;border-radius:9px}
+.btn.ghost{background:transparent}
+.btn:disabled{opacity:.4}
+.btn svg{width:18px;height:18px}
+.label{font-family:var(--kai);font-size:15px;letter-spacing:.3em;color:var(--muted);margin:0 0 10px;display:flex;align-items:center;gap:10px}
+.label::after{content:"";flex:1;height:1px;background:var(--line)}
+.forecast{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;align-items:end;height:92px;margin-bottom:6px}
+.forecast .col{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:4px}
+.forecast .bar{width:100%;max-width:26px;border-radius:6px 6px 2px 2px;background:var(--accent);opacity:.8;min-height:3px}
+.forecast .col:first-child .bar{opacity:1}
+.forecast .n{font-size:11px;color:var(--muted)}
+.forecast .d{font-size:11px;color:var(--muted);font-family:var(--kai)}
+.beadrow{display:flex;justify-content:space-between;align-items:flex-end;margin:6px 0 4px;height:80px}
+.beadrow .bc{display:flex;flex-direction:column;align-items:center;gap:6px;flex:1}
+.beadrow .bd{border-radius:50%;background:radial-gradient(circle at 35% 30%,color-mix(in srgb,var(--gold) 55%,#fff),var(--gold) 60%,color-mix(in srgb,var(--gold) 70%,#000));box-shadow:0 2px 4px rgba(0,0,0,.2)}
+.beadrow small{font-size:10px;color:var(--muted)}
+
+/* panels */
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:14px}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.row.sb{justify-content:space-between}
+select,input[type=text],input[type=search],input[type=number],textarea{background:var(--raise);border:1px solid var(--line);border-radius:11px;padding:10px 12px;width:100%;outline:none}
+select:focus,input:focus,textarea:focus{border-color:var(--accent)}
+textarea{min-height:120px;resize:vertical;line-height:1.7}
+.f{display:block;font-size:12.5px;color:var(--muted);margin:12px 0 6px;letter-spacing:.05em}
+.muted{color:var(--muted)}.tiny{font-size:12px}
+.seg{display:inline-flex;background:var(--soft);border-radius:11px;padding:3px;gap:2px;flex-wrap:wrap}
+.seg button{border:0;background:transparent;padding:7px 13px;border-radius:9px;color:var(--muted)}
+.seg button.on{background:var(--raise);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.tog{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:11px 0;border-top:1px solid var(--line)}
+.tog:first-child{border-top:0}
+.tog .t small{display:block;color:var(--muted);font-size:12px}
+.sw{position:relative;width:44px;height:26px;flex:none}
+.sw input{opacity:0;position:absolute;inset:0;margin:0;cursor:pointer;z-index:1}
+.sw i{position:absolute;inset:0;border-radius:99px;background:var(--line);transition:.2s}
+.sw i::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:var(--raise);box-shadow:0 1px 3px rgba(0,0,0,.25);transition:.2s}
+.sw input:checked+i{background:var(--accent)}.sw input:checked+i::after{left:21px}
+input[type=range]{width:100%;accent-color:var(--accent)}
+.note{background:var(--soft);border-radius:12px;padding:11px 13px;font-size:13px;color:var(--muted);margin-top:10px;line-height:1.7}
+code{background:var(--soft);padding:1px 6px;border-radius:5px;font-size:12.5px}
+
+/* topbar in study */
+.topbar{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.topbar .grow{flex:1;min-width:0}
+.topbar select{width:auto;max-width:100%;padding:8px 10px}
+.progress{height:3px;background:var(--line);border-radius:3px;overflow:hidden;margin:-6px 0 18px}
+.progress i{display:block;height:100%;background:var(--accent);transition:width .4s}
+
+/* the card */
+.card3d{perspective:1600px}
+.flip{display:grid;cursor:pointer}
+.ansbox{margin-top:.8em;padding-top:.8em;border-top:1px dashed var(--line);animation:faceIn .35s ease both}
+@keyframes faceIn{from{opacity:0;transform:translateY(8px) scale(.985)}to{opacity:1;transform:none}}
+.rmbar{font-size:13px;line-height:1.6;background:var(--soft);border-radius:12px;padding:8px 12px;margin:0 0 10px;color:var(--ink)}
+.rmbar b{color:var(--accent)}
+.pvi{display:flex;gap:12px;align-items:flex-start;position:relative;cursor:pointer}
+.pvi input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.ckb{flex:none;width:26px;height:26px;border-radius:8px;border:2px solid var(--accent);margin-top:2px;display:grid;place-items:center;background:var(--raise)}
+.pvi input:checked+.ckb{background:var(--accent)}
+.pvi input:checked+.ckb::after{content:'';width:6px;height:12px;border:solid var(--accent-ink);border-width:0 3px 3px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.gsz{margin:0 0 10px}
+.face{grid-area:1/1;backface-visibility:hidden;-webkit-backface-visibility:hidden;position:relative;background:var(--raise);border-radius:22px;box-shadow:var(--shadow);min-height:360px;padding:54px 28px 60px;display:flex;flex-direction:column;justify-content:center;text-align:var(--align);font-family:var(--font)}
+.face::before{content:"";position:absolute;inset:9px;border:1px solid var(--line);border-radius:15px;pointer-events:none}
+.face::after{content:"";position:absolute;inset:13px;border:1px solid color-mix(in srgb,var(--line) 55%,transparent);border-radius:12px;pointer-events:none}
+.face .top{position:absolute;top:22px;left:24px;right:24px;display:flex;justify-content:space-between;align-items:flex-start;z-index:1}
+.seal{writing-mode:vertical-rl;font-family:var(--kai);font-size:12px;letter-spacing:.15em;color:var(--accent);border:1.5px solid var(--accent);border-radius:4px;padding:5px 2px;line-height:1.1;max-height:84px;overflow:hidden;opacity:.85}
+.beads{display:flex;gap:4px;align-items:center}
+.beads i{width:7px;height:7px;border-radius:50%;border:1px solid var(--gold);display:block}
+.beads i.f{background:var(--gold)}
+.content{writing-mode:var(--wm);position:relative;z-index:1}
+body.vert .content{max-height:56vh;overflow:auto;margin:0 auto}
+.ftext{font-size:var(--size);line-height:var(--lh);font-weight:600;word-break:break-word}
+.rtext{font-family:var(--kai);font-size:calc(var(--size)*.4);color:var(--muted);margin-top:.5em;letter-spacing:.08em}
+.qsmall{font-size:calc(var(--size)*.42);color:var(--muted);margin-bottom:.9em;padding-bottom:.7em;border-bottom:1px dashed var(--line)}
+body.vert .qsmall{border-bottom:0;border-left:1px dashed var(--line);margin:0 0 0 .9em;padding:0 0 0 .7em}
+.btext{font-size:calc(var(--size)*.62);line-height:var(--lh);word-break:break-word}
+.ftext p,.btext p{margin:0 0 var(--para)}.ftext p:last-child,.btext p:last-child{margin:0}
+.hint{position:absolute;bottom:24px;left:0;right:0;text-align:center;font-family:var(--kai);font-size:12.5px;letter-spacing:.3em;color:var(--faint)}
+.spk{position:absolute;right:22px;bottom:20px;z-index:2;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--surface);display:grid;place-items:center;color:var(--ink)}
+.spk svg{width:18px;height:18px}
+.grades{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+.grades button{position:relative;border:1px solid var(--line);background:var(--surface);border-radius:16px;padding:14px 6px 12px;overflow:hidden;transition:transform .15s}
+.grades button:active{transform:scale(.96)}
+.grades button::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:var(--c)}
+.grades b{display:block;font-family:var(--kai);font-size:20px;letter-spacing:.15em;color:var(--c)}
+.grades small{font-size:12px;color:var(--muted)}
+.grades kbd{position:absolute;top:8px;right:9px;font-size:10px;color:var(--faint);font-family:var(--sans)}
+.showans{margin-top:18px;width:100%}
+.empty{text-align:center;padding:44px 20px}
+.empty .ens{width:90px;height:90px;margin:0 auto 14px;opacity:.85}
+.empty h3{font-family:var(--kai);font-size:22px;letter-spacing:.2em;margin:0 0 6px;font-weight:700}
+
+/* player */
+.ctrl{display:flex;gap:14px;justify-content:center;align-items:center;margin-top:20px}
+.ctrl button{width:52px;height:52px;border-radius:50%;border:1px solid var(--line);background:var(--surface);display:grid;place-items:center;color:var(--ink)}
+.ctrl button.main{width:70px;height:70px;background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.ctrl svg{width:20px;height:20px}.ctrl .main svg{width:26px;height:26px}
+
+/* market */
+.chips{display:flex;gap:8px;overflow-x:auto;padding:2px 0 12px;margin:0 -18px;padding-left:18px;padding-right:18px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1px solid var(--line);background:var(--surface);border-radius:99px;padding:7px 14px;font-size:13.5px;color:var(--muted)}
+.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.decks{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:6px}
+.deck{position:relative;background:var(--raise);border:1px solid var(--line);border-radius:16px;padding:16px 14px 14px 22px;text-align:left;overflow:hidden;min-height:150px;display:flex;flex-direction:column;box-shadow:0 10px 22px -16px rgba(0,0,0,.35)}
+.deck::before{content:"";position:absolute;left:0;top:0;bottom:0;width:8px;background:var(--dc)}
+.deck::after{content:"";position:absolute;left:8px;top:0;bottom:0;width:1px;background:color-mix(in srgb,var(--dc) 40%,transparent)}
+.deck .cat{font-size:11px;letter-spacing:.2em;color:var(--dc);font-weight:700}
+.deck h4{font-family:var(--kai);font-size:17px;margin:4px 0 6px;line-height:1.35;font-weight:700}
+.deck p{margin:0;font-size:12px;color:var(--muted);line-height:1.55;flex:1}
+.deck .ft{display:flex;justify-content:space-between;align-items:center;margin-top:10px;font-size:12px;color:var(--muted)}
+.deck .ft .added{color:var(--ok)}
+@media(max-width:380px){.decks{grid-template-columns:1fr}}
+
+/* list */
+.item{border-top:1px solid var(--line);padding:12px 2px;display:flex;gap:10px;align-items:center}
+.item:first-child{border-top:0}
+.item .t{flex:1;min-width:0}
+.item .t b{font-family:var(--font);font-size:16.5px;font-weight:600}
+.item .t .b{color:var(--muted);font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pill{display:inline-block;font-size:11px;padding:1px 8px;border-radius:99px;background:var(--soft);color:var(--muted);margin:4px 4px 0 0}
+.pill.due{background:var(--accent);color:var(--accent-ink)}
+
+/* settings */
+.themes{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.themes button{border:2px solid transparent;border-radius:16px;padding:0;overflow:hidden;background:none;text-align:left;box-shadow:0 0 0 1px var(--line)}
+.themes button.on{border-color:var(--accent);box-shadow:none}
+.themes .pv{height:84px;padding:10px;display:flex;flex-direction:column;justify-content:space-between}
+.themes .pv i{display:block;width:62%;height:42px;border-radius:7px;box-shadow:0 6px 12px -6px rgba(0,0,0,.4)}
+.themes .nm{font-family:var(--kai);font-size:14px;padding:7px 10px;background:var(--surface);letter-spacing:.1em}
+.logos{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.logos button{border:2px solid transparent;border-radius:16px;background:var(--raise);padding:12px 6px 8px;box-shadow:0 0 0 1px var(--line)}
+.logos button.on{border-color:var(--accent);box-shadow:none}
+.logos .lg{width:56px;height:56px;margin:0 auto 6px;border-radius:13px;overflow:hidden;box-shadow:0 6px 14px -6px rgba(0,0,0,.4)}
+.logos .lg svg{display:block;width:100%;height:100%}
+.logos span{font-family:var(--kai);font-size:13px}
+
+/* nav */
+.nav{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(12px + var(--safe-b));z-index:10;display:flex;gap:2px;padding:6px;border-radius:22px;background:color-mix(in srgb,var(--surface) 82%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);box-shadow:0 14px 30px -14px rgba(0,0,0,.35)}
+.nav button{border:0;background:transparent;width:62px;padding:7px 0 5px;border-radius:16px;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:2px;font-size:11px;letter-spacing:.1em;position:relative}
+.nav button svg{width:22px;height:22px}
+.nav button.on{color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent)}
+.nav .dot{position:absolute;top:4px;right:13px;min-width:16px;height:16px;border-radius:8px;background:var(--accent);color:var(--accent-ink);font-size:10px;line-height:16px;padding:0 4px;letter-spacing:0}
+
+/* modal & toast */
+.mask{position:fixed;inset:0;background:rgba(10,8,5,.45);display:none;align-items:flex-end;justify-content:center;z-index:20;padding:12px;backdrop-filter:blur(2px)}
+.mask.on{display:flex}
+.modal{background:var(--surface);border-radius:22px;padding:20px;width:100%;max-width:520px;max-height:88vh;overflow:auto;animation:up .3s ease}
+@keyframes up{from{transform:translateY(30px);opacity:0}to{transform:none;opacity:1}}
+@media(min-width:640px){.mask{align-items:center}}
+.modal h3{font-family:var(--kai);font-size:20px;letter-spacing:.12em;margin:0 0 6px}
+.toast{position:fixed;left:50%;bottom:calc(96px + var(--safe-b));transform:translateX(-50%) translateY(10px);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:99px;font-size:14px;opacity:0;transition:.3s;pointer-events:none;z-index:30;display:flex;gap:12px;align-items:center;white-space:nowrap}
+.toast.on{opacity:1;transform:translateX(-50%);pointer-events:auto}
+.toast button{border:0;background:none;color:var(--gold);font-weight:700;padding:0}
+.theory p{margin:.4em 0 .9em;line-height:1.85}
+.theory h3{font-family:var(--kai);font-size:19px;letter-spacing:.12em;margin:0 0 10px}
+.theory svg text{fill:var(--muted);font-size:10.5px;font-family:var(--sans)}
+.ivs{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 12px}
+.ivs span{font-family:var(--kai);background:var(--soft);border-radius:8px;padding:4px 9px;font-size:14px}
+
+/* recite card */
+.flip.rec.on{transform:none}
+.ctx{font-size:calc(var(--size)*.42);color:var(--muted);line-height:1.6;margin-bottom:.7em;padding-bottom:.6em;border-bottom:1px dashed var(--line)}
+.ctx p{margin:0}
+body.vert .ctx{border-bottom:0;border-left:1px dashed var(--line);margin:0 0 0 .7em;padding:0 0 0 .6em}
+.pos{display:block;font-family:var(--sans);font-size:11px;letter-spacing:.2em;color:var(--faint);margin-bottom:.4em}
+.ttext{font-size:calc(var(--size)*.78);line-height:var(--lh);font-weight:600;letter-spacing:.04em;word-break:break-word}
+.gap{display:inline-block;width:.92em;height:.9em;border-bottom:2px solid var(--accent);margin:0 .04em;vertical-align:-.1em;opacity:.75}
+body.vert .gap{border-bottom:0;border-left:2px solid var(--accent);height:.92em;width:.9em}
+.fill{color:var(--accent);animation:fadein .45s ease}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+.blankline{font-size:.55em;color:var(--faint);font-weight:400}
+/* selection */
+.item.selectable{cursor:pointer}
+.ck{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--faint);flex:none;display:grid;place-items:center}
+.item.picked .ck{background:var(--accent);border-color:var(--accent)}
+.item.picked .ck::after{content:"";width:9px;height:5px;border:2px solid var(--accent-ink);border-top:0;border-right:0;transform:rotate(-45deg) translate(1px,-1px)}
+.item.picked{background:color-mix(in srgb,var(--accent) 7%,transparent);border-radius:10px}
+.selbar{position:fixed;left:50%;bottom:calc(88px + var(--safe-b));transform:translateX(-50%) translateY(20px);opacity:0;pointer-events:none;z-index:12;display:flex;align-items:center;gap:4px;background:var(--ink);color:var(--bg);border-radius:16px;padding:6px 8px 6px 14px;box-shadow:0 14px 30px -10px rgba(0,0,0,.5);transition:.25s;white-space:nowrap;font-size:13.5px}
+body.selon .toast{bottom:calc(150px + var(--safe-b))}
+.selbar.on{opacity:1;transform:translateX(-50%);pointer-events:auto}
+.selbar button{border:0;background:transparent;color:var(--bg);padding:7px 9px;border-radius:10px;font-size:13.5px}
+.selbar button:disabled{opacity:.35}
+.selbar button.danger{color:#ff9b8c}
+.ckrow{display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--line);cursor:pointer}
+.ckrow:first-child{border-top:0}.ckrow span:nth-child(2){flex:1}
+.ckrow input,.ckpill input{width:18px;height:18px;accent-color:var(--accent);margin:0}
+.ckpill{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:99px;padding:6px 12px;background:var(--raise);cursor:pointer;font-size:13.5px}
+
+.grades.two{grid-template-columns:repeat(2,1fr)}
+.hp{display:none}.hp.on{display:block;animation:fade .3s ease}
+.steps{margin:0;padding-left:1.4em}.steps li{margin:0 0 12px;line-height:1.8}.steps li b{display:block;font-family:var(--kai);font-size:16px;letter-spacing:.05em;margin-bottom:1px}
+.rule{display:flex;gap:12px;padding:10px 0;border-top:1px solid var(--line);align-items:baseline}.rule:first-of-type{border-top:0}
+.rule b{flex:none;width:3em;font-family:var(--kai);font-size:17px}.rule span{line-height:1.7}
+.theory ul{margin:.3em 0 .6em;padding-left:1.2em}.theory ul li{margin:.5em 0;line-height:1.8}
+.lnk{border:0;background:none;color:var(--muted);text-decoration:underline;text-underline-offset:3px;padding:2px 8px;font-size:12.5px}
+.legal .steps li{font-size:14px}
+</style>
+</head>
+<body data-theme="paper">
+<div class="wrap">
+
+<!-- ========== TODAY ========== -->
+<section class="view on" id="v-today">
+  <div class="mast"><div class="logo" id="mastLogo"></div><h1>念念<small>記憶卡 · 遺忘曲線</small></h1><div class="sp"></div>
+    <button class="iconbtn" id="themeQuick" aria-label="切換背景"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></button></div>
+  <div class="hero">
+    <div><div class="day" id="hDay"></div><div class="md" id="hMd"></div><div class="quote" id="hQuote"></div></div>
+    <div class="ring"><svg viewBox="0 0 118 118" width="118" height="118"><circle cx="59" cy="59" r="52" fill="none" stroke="var(--line)" stroke-width="6"/><circle id="ringArc" cx="59" cy="59" r="52" fill="none" stroke="var(--accent)" stroke-width="6" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7" style="transition:stroke-dashoffset .8s"/></svg><div class="c"><b id="rDue">0</b><span>待複習</span></div></div>
+  </div>
+  <div class="trio"><div><b id="tStreak">0</b><span>連續天數</span></div><div><b id="tDone">0</b><span>今日完成</span></div><div><b id="tMaster">0</b><span>已熟記</span></div></div>
+  <div class="cta">
+    <button class="btn pri big" id="goStudy">開始複習</button>
+    <button class="btn big" id="goPlay" style="flex:.7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7"/></svg>念讀</button>
+  </div>
+  <div class="row" style="justify-content:space-between;margin:-12px 0 24px;gap:8px"><span class="tiny muted" id="nextLine"></span><button class="btn sm ghost" id="goPractice">自由練習（不影響排程）</button></div>
+  <div class="label">未來七日</div>
+  <div class="forecast" id="forecast"></div>
+  <div class="label" style="margin-top:22px">九珠進度 <span class="tiny" style="letter-spacing:0">每顆珠＝一個記憶階段</span></div>
+  <div class="beadrow" id="beadrow"></div>
+  <p class="tiny muted" style="text-align:center;margin-top:30px"><button class="lnk" id="toHelp">使用說明</button>·<button class="lnk" id="toDesign">設計原理</button>·<button class="lnk" id="toLegal">聲明</button></p>
+</section>
+
+<!-- ========== STUDY ========== -->
+<section class="view" id="v-study">
+  <div class="topbar">
+    <button class="iconbtn" data-back aria-label="返回"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <div class="grow"><select id="deckSel"></select></div>
+    <button class="iconbtn" id="findBtn" aria-label="搜尋卡片" title="搜尋卡片"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></button>
+    <button class="iconbtn" id="undoBtn" aria-label="復原上一次評分" title="復原上一次評分" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 7H4V2"/><path d="M4 7a9 9 0 1 1-1 7"/></svg></button>
+  </div>
+  <div class="row" style="justify-content:center;margin:-2px 0 14px"><div class="seg" id="modeSeg2"><button data-m="srs" class="on">依排程複習</button><button data-m="practice">自由練習</button></div></div>
+  <div class="progress"><i id="prog"></i></div>
+  <div id="studyArea"></div>
+  <p class="tiny muted" style="text-align:center;margin-top:16px" id="kbdHint">鍵盤：空白鍵翻面 · 1 忘了 · 2 模糊 · 3 記得 · S 念讀 · Ctrl+Z 復原</p>
+</section>
+
+<!-- ========== PLAY ========== -->
+<section class="view" id="v-play">
+  <div class="topbar">
+    <button class="iconbtn" data-back aria-label="返回"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <div class="grow"><select id="deckSel2"></select></div>
+    <span class="tiny muted" id="pIdx"></span>
+  </div>
+  <div id="playCard"></div>
+  <div class="ctrl">
+    <button id="pPrev" aria-label="上一張"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h2v14H6zM20 5v14L9 12z"/></svg></button>
+    <button id="pPlay" class="main" aria-label="播放"></button>
+    <button id="pNext" aria-label="下一張"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 5h2v14h-2zM4 5v14l11-7z"/></svg></button>
+  </div>
+  <div class="panel" style="margin-top:22px">
+    <div class="tog"><div class="t">播放範圍</div><div class="seg" id="pScope"><button data-s="due">待複習</button><button data-s="all">全部</button></div></div>
+    <div class="tog"><div class="t">只念正面</div><label class="sw"><input type="checkbox" id="pFrontOnly"><i></i></label></div>
+    <div class="tog"><div class="t">每張重複</div><div class="seg" id="pRepeat"><button data-v="1">1</button><button data-v="2">2</button><button data-v="3">3</button></div></div>
+    <div class="tog"><div class="t">停頓 <b id="pGapV"></b> 秒</div><input type="range" id="pGap" min="0.5" max="6" step="0.5" style="width:50%"></div>
+    <div class="tog"><div class="t">螢幕保持常亮</div><label class="sw"><input type="checkbox" id="pWake"><i></i></label></div>
+    <div class="tog"><div class="t">背景持續播放<small>切到其他 App 或關螢幕時嘗試繼續念</small></div><label class="sw"><input type="checkbox" id="pBg"><i></i></label></div>
+    <div class="note">背景播放視系統而定：Android Chrome 多半可行；iPhone 鎖定時常會暫停。最穩的方式是開「螢幕常亮」並把亮度調低。</div>
+  </div>
+</section>
+
+<!-- ========== MARKET ========== -->
+<section class="view" id="v-market">
+  <div class="mast"><h1 style="letter-spacing:.12em">卡組<small>挑一組開始，或匯入自己的</small></h1></div>
+  <input type="search" id="mQ" placeholder="搜尋卡組或卡片內容…">
+  <div class="chips" id="mCats" style="margin-top:12px"></div>
+  <div class="decks" id="mDecks"></div>
+  <div class="label" style="margin-top:28px">匯入自己的卡片</div>
+  <div class="panel">
+    <label class="f" style="margin-top:0">放入卡組（可新建）</label>
+    <input type="text" id="impDeck" placeholder="例如：國文第三課" list="deckList"><datalist id="deckList"></datalist>
+    <span class="f">卡片類型</span>
+    <div class="seg" id="impType"><button data-v="qa" class="on">問答卡（翻面）</button><button data-v="solo">單獨記憶（只有正面）</button><button data-v="recite">前後連貫背誦（整段貼上）</button><button data-v="article">文章（自動找定義）</button></div>
+    <div id="recOpts" style="display:none">
+      <div class="note" style="margin-top:10px">整段經文、詩詞、課文直接貼上，系統自動切句、依順序出題。複習時顯示上一句，這一句用提示呈現，按下後原地揭示，不翻面。</div>
+      <span class="f">切句方式</span><div class="seg" id="splitSeg"><button data-v="auto">智慧切句</button><button data-v="sent">依句號</button><button data-v="comma">依逗號</button><button data-v="line">依換行</button></div>
+      <span class="f">每張卡包含</span><div class="seg" id="groupSeg"><button data-v="1">1 段</button><button data-v="2">2 段</button><button data-v="3">3 段</button></div>
+      <div id="rmodeBox"><span class="f">背誦方式</span><div class="seg" id="rmodeSeg"><button data-v="loop">輪播（依序循環）</button><button data-v="daily">每日一句</button></div></div>
+      <span class="f">背誦提示</span><div class="seg" id="hintSeg"><button data-v="cloze">漸進挖空</button><button data-v="first">首字提示</button><button data-v="prev">只給上句</button><button data-v="none">全部隱藏</button></div>
+      <label class="f">讀音替換表（選填，每行「原字=讀音字」）</label><textarea id="impDict" style="min-height:64px" placeholder="般若=波惹&#10;揭諦=接地"></textarea>
+    </div>
+    <label class="f" id="qaHelp">每行一張卡（格式見下方「匯入格式參考」）</label>
+    <textarea id="impText" placeholder="般若 | 智慧 | 波惹&#10;四聖諦 | 苦、集、滅、道&#10;apple | 蘋果" style="margin-top:8px"></textarea>
+    <div class="tiny muted" id="recPrev" style="line-height:1.8;margin-top:6px"></div>
+    <div class="row" style="margin-top:12px"><button class="btn pri" id="impBtn">直接匯入</button><button class="btn" id="impPrev">預覽並挑選</button><label class="btn">選擇檔案<input type="file" id="impFile" accept=".txt,.csv,.tsv,.json,text/*" hidden></label><span class="tiny muted">支援 .txt .csv .tsv .json</span></div>
+  </div>
+  <div class="panel">
+    <b style="font-family:var(--kai);letter-spacing:.1em;font-size:16px">匯入格式參考</b>
+    <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:10px">
+      <tr style="color:var(--muted)"><td style="padding:6px 4px;border-bottom:1px solid var(--line)">欄位</td><td style="padding:6px 4px;border-bottom:1px solid var(--line)">說明</td><td style="padding:6px 4px;border-bottom:1px solid var(--line)">必填</td></tr>
+      <tr><td style="padding:6px 4px">1 正面</td><td>題目、詞語、上句</td><td>✓</td></tr>
+      <tr><td style="padding:6px 4px">2 背面</td><td>答案、解釋、下句；換段寫 <code>\n</code></td><td></td></tr>
+      <tr><td style="padding:6px 4px">3 讀音</td><td>念正面時改念這裡（同音字）</td><td></td></tr>
+      <tr><td style="padding:6px 4px">4 背面讀音</td><td>念背面時改念這裡</td><td></td></tr>
+      <tr><td style="padding:6px 4px">5 卡組</td><td>不填則用上方「放入卡組」</td><td></td></tr>
+    </table>
+    <div class="seg" id="fmtSeg" style="margin-top:14px"><button data-f="txt" class="on">純文字 |</button><button data-f="csv">CSV（Excel）</button><button data-f="json">JSON</button></div>
+    <pre id="fmtBox" style="background:var(--raise);border:1px solid var(--line);border-radius:11px;padding:12px;font-size:12.5px;line-height:1.7;white-space:pre-wrap;word-break:break-all;margin:10px 0 8px;max-height:260px;overflow:auto"></pre>
+    <div class="tiny muted" id="fmtTip" style="line-height:1.7"></div>
+    <div class="row" style="margin-top:10px"><button class="btn sm" id="fmtFill">填入匯入框試試</button><button class="btn sm" id="fmtCopy">複製範例</button></div>
+    <div class="note">小提醒：<br>・空行與 <code>#</code> 開頭的行會略過，可用來寫註解。<br>・第一行若是「正面、背面…」等標題列，會自動略過。<br>・用 Excel 存 CSV 時請選「CSV UTF-8」；若存成一般 CSV（Big5），本工具也會自動辨識。<br>・同一個檔案可用第 5 欄放多個卡組。</div>
+  </div>
+  <div class="panel">
+    <div class="row sb"><b style="font-family:var(--kai);letter-spacing:.1em">匯出備份</b><div class="row"><button class="btn sm" id="expJson">JSON（含進度）</button><button class="btn sm" id="expTxt">純文字</button></div></div>
+    <textarea id="expOut" readonly style="margin-top:10px;display:none"></textarea>
+    <button class="btn sm" id="expCopy" style="margin-top:8px;display:none">複製</button>
+    <div class="note">資料只存在這台裝置的瀏覽器。換裝置或清除瀏覽資料前，請先匯出 JSON 保存。</div>
+  </div>
+</section>
+
+<!-- ========== MINE ========== -->
+<section class="view" id="v-mine">
+  <div class="mast"><h1 style="letter-spacing:.12em">我的卡片<small id="libCount"></small></h1><div class="sp"></div><button class="btn sm" id="selBtn">選取</button><button class="btn pri sm" id="addBtn">＋ 新增</button></div>
+  <input type="search" id="libQ" placeholder="搜尋正面、背面、讀音或卡組…">
+  <div class="row" style="margin:10px 0 14px;flex-wrap:nowrap"><select id="libDeck"></select><select id="libSort"><option value="due">依到期</option><option value="new">最新加入</option><option value="stage">依階段</option><option value="order">依經文順序</option></select></div>
+  <div class="chips" id="libStatus" style="margin-top:-4px"></div>
+  <div class="panel" id="libList"></div>
+  <div class="row" id="deckOps" style="justify-content:flex-end"></div>
+</section>
+
+<!-- ========== SETTINGS ========== -->
+<section class="view" id="v-set">
+  <div class="mast"><h1 style="letter-spacing:.12em">設定<small>外觀 · 念讀 · 排程</small></h1></div>
+  <div class="label">背景模版</div>
+  <div class="themes" id="themes">
+    <button data-t="paper"><div class="pv" style="background:#f3ecdf"><i style="background:#fffdf8"></i><span style="color:#a3392b;font-family:var(--kai)">朱</span></div><div class="nm">宣紙</div></button>
+    <button data-t="ink"><div class="pv" style="background:#121417"><i style="background:#21252b"></i><span style="color:#c9a25a;font-family:var(--kai)">金</span></div><div class="nm">墨夜</div></button>
+    <button data-t="celadon"><div class="pv" style="background:#dfe9e2"><i style="background:#fbfdfb"></i><span style="color:#2e6f57;font-family:var(--kai)">青</span></div><div class="nm">青瓷</div></button>
+    <button data-t="umber"><div class="pv" style="background:#e7d9c4"><i style="background:#faf4ea"></i><span style="color:#7a4a2a;font-family:var(--kai)">棕</span></div><div class="nm">褐棕</div></button>
+    <button data-t="stone"><div class="pv" style="background:#dcdedf"><i style="background:#f7f8f9"></i><span style="color:#4a5a66;font-family:var(--kai)">灰</span></div><div class="nm">石灰</div></button>
+    <button data-t="albion"><div class="pv" style="background:#d6e1ec"><i style="background:#f6f9fc"></i><span style="color:#1f4e79;font-family:var(--kai)">藍</span></div><div class="nm">英倫藍</div></button>
+  </div>
+  <div class="label" style="margin-top:24px">圖示（主畫面圖示固定為朱印）</div>
+  <div class="logos" id="logos"></div>
+  <div class="label" style="margin-top:24px">字級與段落</div>
+  <div class="panel">
+    <div class="row sb"><span>卡片字級 <b id="sizeV"></b>px</span><div class="seg" id="szSeg"><button data-v="26">小</button><button data-v="38">中</button><button data-v="50">大</button><button data-v="64">特大</button></div></div>
+    <input type="range" id="size" min="18" max="76" step="2" style="margin-top:10px">
+    <div class="tog"><div class="t">字體</div><div class="seg" id="fontSeg"><button data-v="serif">明體</button><button data-v="kai">楷體</button><button data-v="sans">黑體</button></div></div>
+    <div class="tog"><div class="t">點卡片時<small>答案怎麼出現</small></div><div class="seg" id="tapSeg"><button data-v="reveal">原地顯示</button><button data-v="flip">換成背面</button><button data-v="btn">只用按鈕</button></div></div>
+    <div class="tog"><div class="t">排列</div><div class="seg" id="wmSeg"><button data-v="h">橫排</button><button data-v="v">直排</button></div></div>
+    <div class="tog"><div class="t">行距</div><div class="seg" id="lhSeg"><button data-v="1.4">緊</button><button data-v="1.7">中</button><button data-v="2.1">鬆</button></div></div>
+    <div class="tog"><div class="t">段落間距</div><div class="seg" id="paraSeg"><button data-v=".3em">小</button><button data-v=".8em">中</button><button data-v="1.5em">大</button></div></div>
+    <div class="tog"><div class="t">對齊</div><div class="seg" id="alignSeg"><button data-v="center">置中</button><button data-v="left">靠左</button></div></div>
+    <div class="tog"><div class="t">顯示自編讀音<small>在正面下方以小字標出</small></div><label class="sw"><input type="checkbox" id="showReading"><i></i></label></div>
+  </div>
+  <div class="label" style="margin-top:24px">念讀</div>
+  <div class="panel">
+    <label class="f" style="margin-top:0">中文語音</label><select id="zhVoice"></select>
+    <label class="f">英文語音</label><select id="enVoice"></select>
+    <label class="f">語速 <b id="rateV"></b></label><input type="range" id="rate" min="0.5" max="1.5" step="0.05">
+    <div class="tog"><div class="t">出新卡時自動念正面</div><label class="sw"><input type="checkbox" id="autoFront"><i></i></label></div>
+    <div class="tog"><div class="t">翻面時自動念背面</div><label class="sw"><input type="checkbox" id="autoBack"><i></i></label></div>
+    <div class="row" style="margin-top:10px;flex-wrap:nowrap"><input type="text" id="ttsTest" value="行深般若波羅蜜多時"><button class="btn" id="ttsTestBtn">試聽</button></div>
+    <div class="note">「自編讀音」用同音字修正念錯的字：正面「般若」，讀音填「波惹」，就會念成 bō rě。讀音留空則照正面念。</div>
+  </div>
+  <div class="label" style="margin-top:24px">排程</div>
+  <div class="panel">
+    <div class="tog"><div class="t">每日新卡上限<small>避免一次加入整組卡片後全部同時到期</small></div><input type="number" id="newPerDay" min="1" max="500" style="width:84px;text-align:center"></div>
+  </div>
+  <div class="label" style="margin-top:24px">資料</div>
+  <div class="row"><button class="btn" id="resetProg">重設複習進度</button><button class="btn" id="clearAll" style="color:var(--bad)">刪除全部卡片</button></div>
+</section>
+
+<!-- ========== THEORY ========== -->
+<section class="view theory" id="v-theory">
+  <div class="mast"><h1 style="letter-spacing:.12em">說明<small>使用 · 原理 · 設計 · 聲明</small></h1></div>
+  <div class="seg" id="helpSeg" style="margin-bottom:14px"><button data-h="use" class="on">怎麼用</button><button data-h="why">原理</button><button data-h="design">設計</button><button data-h="legal">聲明</button></div>
+
+  <div class="hp on" id="hp-use">
+    <div class="panel"><h3>每天怎麼用</h3>
+      <ol class="steps">
+        <li><b>加入卡片</b>到「卡組」挑一組預設卡，或在匯入區貼上自己的內容。經文可以整段貼上，系統會自動切句。</li>
+        <li><b>按「開始複習」</b>每張卡先在心裡回想答案（背經文就先默背），再翻面核對。</li>
+        <li><b>誠實評分</b>忘了、模糊、記得，評分決定這張卡多久後回來。</li>
+        <li><b>明天再來</b>首頁會顯示今天要複習的張數，以及未來七日的預估，照著做就好。</li>
+      </ol></div>
+    <div class="panel"><h3>評分之後會怎樣</h3>
+      <div class="rule"><b style="color:var(--ok)">記得</b><span>這張卡離開本輪，排到更久以後再回來（30 分 → 12 小時 → 1 天 → ……）。</span></div>
+      <div class="rule"><b style="color:var(--mid)">模糊</b><span>這一輪稍後再看一次；排程維持目前的間隔，不往後推。</span></div>
+      <div class="rule"><b style="color:var(--bad)">忘了</b><span>隔幾張後馬上再考，直到你答出來為止；排程回到起點，之後再一格一格往後推。</span></div>
+      <p class="tiny muted">所以「忘了」「模糊」的卡不會憑空消失：同一輪會再出現，等你記起來才離開。</p></div>
+    <div class="panel"><h3>卡片按了就不見，想再背一次？</h3>
+      <ul>
+        <li><b>剛按錯：</b>複習頁右上角的「復原」，可以退回最近 30 次評分；評分後下方也會跳出「復原」。</li>
+        <li><b>想再背一遍：</b>用「自由練習」。首頁、複習頁上方都有入口；它會把卡片重新跑一輪，而且不改動排程。</li>
+        <li><b>只練幾張：</b>在「我的」按「選取」，勾選後點「練習」。</li>
+        <li><b>想知道它什麼時候回來：</b>「我的」每張卡都標示下次時間，首頁有未來七日的張數。</li>
+        <li><b>今天想多學：</b>完成畫面按「再學 10 張新卡」，或到「設定」調高每日新卡上限。</li>
+      </ul></div>
+    <div class="panel"><h3>背經文的建議</h3>
+      <ul>
+        <li>先默背這一句，再按「顯示經文」核對，不要先偷看。</li>
+        <li>剛開始用「漸進挖空」；背熟了改成「只給上句」或「全部隱藏」。</li>
+        <li>搭配「念讀」跟著唸，用耳朵再記一次。</li>
+        <li>每天固定時間、少量多次，比一次背很多更有效。</li>
+      </ul></div>
+  </div>
+
+  <div class="hp" id="hp-why">
+    <div class="panel">
+      <p>1885 年，德國心理學家<b>赫曼・艾賓浩斯</b>出版《論記憶》。他以自己為受試者，背誦大量無意義音節，再於不同時間點測量「重新學會」能省下多少時間，畫出了第一條遺忘曲線。</p>
+      <svg id="curve" viewBox="0 0 340 200" width="100%"></svg>
+      <p class="tiny muted">實線：不複習時，重新學習可節省的時間比例（艾賓浩斯的原始數據，通俗上常稱為「保留率」）。虛線：按時複習的示意——每次複習拉回高點，之後忘得越來越慢。</p>
+    </div>
+    <div class="panel">
+      <h3>三個發現</h3>
+      <p><b>先快後慢。</b>學完 20 分鐘後重學可省下約 58%，一天後約 34%，一個月後約 21%。</p>
+      <p><b>複習能重設曲線。</b>在快忘記前複習，記憶被拉回，下一次遺忘也變慢。</p>
+      <p><b>間隔效應。</b>同樣的練習量，分散在幾天比一次背完記得更久。</p>
+    </div>
+    <div class="panel">
+      <h3>要知道的限制</h3>
+      <ul>
+        <li>原始實驗只有他一個人，材料是無意義音節。有意義的內容（例如你理解的文章、常誦的經文）通常忘得比較慢。</li>
+        <li>2015 年 Murre 與 Dros 重做了類似實驗，結果與原始數據相近，所以「先快後慢」的整體形狀是站得住的；不過那次同樣只有一位受試者。</li>
+        <li>曲線描述的是平均趨勢，不是你個人的精確預測；每個人、每種內容的遺忘速度都不同。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="hp" id="hp-design">
+    <div class="panel">
+      <h3>九個階段的複習間隔</h3>
+      <div class="ivs"><span>5 分</span><span>30 分</span><span>12 時</span><span>1 天</span><span>2 天</span><span>4 天</span><span>7 天</span><span>15 天</span><span>30 天</span></div>
+      <p>每張卡有九顆珠，代表九個階段。九顆珠走完即為「熟記」，之後每 60 天複習一次。</p>
+      <p class="tiny muted">這組間隔是坊間常見的「艾賓浩斯複習表」，並向後延伸到 30 天。艾賓浩斯本人只量測遺忘的速度，並沒有提出固定的複習表，所以這是依據曲線做的實用設計，不是原著的規定。</p>
+    </div>
+    <div class="panel">
+      <h3>排程與「本輪」的分工</h3>
+      <ul>
+        <li><b>排程</b>管長期：這張卡什麼時候該回來。</li>
+        <li><b>本輪</b>管短期：這一次複習中，這張卡要不要再考。忘了、模糊的卡會在本輪重考，答出來才離開。</li>
+        <li><b>自由練習</b>只動本輪，不動排程。可以無限次重背。</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>兩種卡片模式</h3>
+      <ul>
+        <li><b>問答翻卡：</b>正面出題，翻面看答案。適合單字、名詞、公式。</li>
+        <li><b>經文背誦：</b>依順序出題，顯示上一句，這一句用提示呈現，原地揭示不翻面。挖空比例從約 30% 起，每升一個階段多挖 15%，最多全挖。另有首字提示、只給上句、全部隱藏。</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>其他設計</h3>
+      <ul>
+        <li><b>每日新卡上限（預設 20）：</b>避免一次加入太多，之後同一天全部到期，複習量暴增。</li>
+        <li><b>固定間隔：</b>本工具不依你的答題表現自動調整間隔（部分專業間隔重複軟體會）。好處是規則單純、可預期。</li>
+        <li><b>念讀：</b>使用裝置內建的語音。讀音優先順序：卡片自編讀音，其次卡組讀音替換表，最後才是原文。</li>
+        <li><b>資料：</b>全部存在這台裝置的瀏覽器，可匯出 JSON 或文字備份。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="hp" id="hp-legal">
+    <div class="panel legal">
+      <h3>使用聲明</h3>
+      <ol class="steps">
+        <li><b>學習輔助，不保證成效</b>本工具依公開的記憶研究原理安排複習，能幫助你規律複習，但成效因人而異，不保證任何考試成績或背誦結果。</li>
+        <li><b>內建卡組僅供自我練習</b>內容依一般教材與公開資料整理，可能有疏漏。專業知識考試的法規、年限、數字、制度與會計準則會隨修法而變動，正式應考前請以主管機關或官方公告的最新內容為準。卡組內容不構成法律、會計、醫療或其他專業意見，發現錯誤也可以自行編輯修正。</li>
+        <li><b>單字表並非官方詞表</b>國中、高中單字卡是依難度挑選的練習用字，分級（如 Level 3–6）為近似分級，不是教育部、大考中心或任何機構公布的正式單字表。</li>
+        <li><b>經典文本</b>心經、金剛經、論語、唐詩、三字經、弟子規等是歷代流傳的公共領域典籍。各版本在用字與斷句上略有出入，本工具採常見通行本，請以你所依循的版本為準。</li>
+        <li><b>讀音與念讀</b>自編讀音（例如「般若」念作「波惹」）只是讓裝置的語音合成讀得接近常見讀法，不代表任何宗派或道場的標準讀誦；經文的正確唱誦與讀音，請以師長、道場或正式課本所傳為準。語音由你的裝置提供，品質因裝置而異。</li>
+        <li><b>隱私與資料</b>卡片、進度與設定只存在這台裝置的瀏覽器，不會上傳到任何伺服器。iPhone 上，「加到主畫面」的念念和 Safari 分頁裡的念念資料是分開的，建議先加到主畫面再開始使用；只在 Safari 分頁使用且很久沒開時，資料可能被系統清除。本工具需要 iOS 16.4 以上。清除瀏覽資料、換裝置或使用無痕模式，資料都可能消失，請定期到「卡組 → 匯出備份」保存。連線時，頁面字型會從 Google Fonts 載入，離線時改用系統字型。</li>
+        <li><b>你匯入的內容由你負責</b>匯入內容的來源與著作權由你自行負責，請勿匯入你無權使用的受著作權保護教材全文。</li>
+        <li><b>獨立製作</b>本工具與任何考試主辦單位、出版社、教育機構或宗教團體，均無隸屬、合作或授權關係。</li>
+        <li><b>現狀提供</b>本工具以現狀提供，不附任何明示或默示的保證；因使用或資料遺失所生的後果，由使用者自行承擔。</li>
+      </ol>
+      <p class="tiny muted">念念 · 記憶卡　2026 年 11 月版</p>
+    </div>
+  </div>
+</section>
+</div>
+
+<nav class="nav" id="nav">
+  <button data-v="today" class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M19.5 9.5A8 8 0 1 0 20 12"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/></svg>今日<span class="dot" id="navDot" style="display:none"></span></button>
+  <button data-v="market"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3.5" y="7.5" width="13" height="13" rx="2"/><path d="M7.5 4.5h10a2.5 2.5 0 0 1 2.5 2.5v10"/></svg>卡組</button>
+  <button data-v="mine"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M9 6.5h11M9 12h11M9 17.5h11"/><circle cx="4.5" cy="6.5" r="1" fill="currentColor"/><circle cx="4.5" cy="12" r="1" fill="currentColor"/><circle cx="4.5" cy="17.5" r="1" fill="currentColor"/></svg>我的</button>
+  <button data-v="set"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7h9M18 7h2M4 17h3M12 17h8"/><circle cx="15.5" cy="7" r="2.3"/><circle cx="9.5" cy="17" r="2.3"/></svg>設定</button>
+  <button data-v="theory"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5"/><circle cx="12" cy="7.8" r=".6" fill="currentColor"/></svg>說明</button>
+</nav>
+<div class="mask" id="mask"><div class="modal" id="modal"></div></div>
+<div class="selbar" id="selBar"><span>已選 <b id="selN">0</b></span><button data-a="all">全選</button><button data-a="practice">練習</button><button data-a="move">移動</button><button data-a="reset">重設</button><button data-a="del" class="danger">刪除</button><button data-a="done">完成</button></div>
+<div class="toast" id="toast"><span id="toastMsg"></span><button id="toastAct" style="display:none"></button></div>
+
+<script>
+(()=>{
+/* ================= constants & helpers ================= */
+const MIN=60e3,H=60*MIN,D=24*H,IV=[5*MIN,30*MIN,12*H,D,2*D,4*D,7*D,15*D,30*D],MAXS=IV.length,KEEP=60*D,KEY='ebbcards.v1';
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const para=s=>esc(s).split('\n').map(l=>`<p>${l||'&nbsp;'}</p>`).join('');
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+const dkey=t=>{const d=new Date(t);return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();};
+const today=()=>dkey(Date.now());
+const CN='〇一二三四五六七八九';const cn=n=>n<=10?(n===10?'十':CN[n]):n<20?'十'+CN[n%10]:CN[Math.floor(n/10)]+'十'+(n%10?CN[n%10]:'');
+const WK='日一二三四五六';
+function fmt(ms){if(ms<=0)return '現在';if(ms<H)return Math.max(1,Math.round(ms/MIN))+' 分';if(ms<D)return Math.round(ms/H)+' 小時';return Math.round(ms/D)+' 天';}
+const ICON={
+  spk:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7"/></svg>',
+  play:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12.5-7.5z"/></svg>',
+  pause:'<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4.5" width="4" height="15" rx="1"/><rect x="14" y="4.5" width="4" height="15" rx="1"/></svg>'
+};
+
+/* ================= logos ================= */
+const LOGOS=[
+ {id:'seal',name:'朱印曲線',svg:`<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="64" fill="#a3392b"/><rect x="7" y="7" width="50" height="50" rx="3" fill="none" stroke="#f7ead6" stroke-width="2"/><path d="M14 46c3-12 6-9 8-6V30c3-8 6-5 8-2V22c3-6 6-4 8-2v-5c3-4 6-3 8-2" fill="none" stroke="#f7ead6" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="50" cy="13" r="3" fill="#f7ead6"/></svg>`},
+ {id:'enso',name:'一圓相',svg:`<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="64" fill="#f3ecdf"/><path d="M44.5 13.5A21 21 0 1 0 52 30" fill="none" stroke="#2a241d" stroke-width="6.5" stroke-linecap="round"/><path d="M52 30c.4 2.6.2 5-.4 7" fill="none" stroke="#2a241d" stroke-width="3" stroke-linecap="round"/><rect x="44" y="44" width="11" height="11" rx="1.5" fill="#a3392b"/></svg>`},
+ {id:'beads',name:'九珠念環',svg:(()=>{let b='';for(let i=0;i<9;i++){const a=(-90+i*40)*Math.PI/180,x=32+19*Math.cos(a),y=32+19*Math.sin(a);const f=i<6?'url(#gBead)':'none';b+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="5.2" fill="${f}" stroke="#e7c884" stroke-width="1" opacity="${i<6?1:.85}"/>`;}return `<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="gBead" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#f3dca6"/><stop offset=".55" stop-color="#c9a25a"/><stop offset="1" stop-color="#7a5a24"/></radialGradient><radialGradient id="gBg" cx="50%" cy="40%" r="75%"><stop offset="0" stop-color="#2b2f36"/><stop offset="1" stop-color="#0f1114"/></radialGradient></defs><rect width="64" height="64" fill="url(#gBg)"/><circle cx="32" cy="32" r="27" fill="none" stroke="#c9a25a" stroke-opacity=".25" stroke-width=".8"/>${b}<path d="M32 13v-5" stroke="#c9a25a" stroke-width="1.4" stroke-linecap="round"/><path d="M32 8l-2 4h4z" fill="#c9a25a"/><rect x="25" y="26" width="14" height="12" rx="2.5" fill="#ece4d2" stroke="#c9a25a" stroke-width=".8"/></svg>`;})()},
+ {id:'stack',name:'三疊卡',svg:`<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="gS1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fbba5"/><stop offset="1" stop-color="#5b8f79"/></linearGradient><linearGradient id="gS2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e2efe6"/><stop offset="1" stop-color="#b9d6c4"/></linearGradient><linearGradient id="gS3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e9f3ec"/></linearGradient><linearGradient id="gSbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f7a60"/><stop offset="1" stop-color="#1c4a3a"/></linearGradient></defs><rect width="64" height="64" fill="url(#gSbg)"/><rect x="14" y="20" width="30" height="34" rx="4" fill="url(#gS1)" transform="rotate(-14 29 37)"/><rect x="16" y="16" width="30" height="34" rx="4" fill="url(#gS2)" transform="rotate(-4 31 33)"/><rect x="19" y="13" width="30" height="34" rx="4" fill="url(#gS3)" transform="rotate(7 34 30)" stroke="#c9a25a" stroke-width=".9"/><path d="M27 37c2.6-9 5.4-6.4 7.2-4.6v-5.4c2.6-5.4 5.4-3.6 7.2-2.7" fill="none" stroke="#2f7a60" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="rotate(7 34 30)"/><circle cx="51" cy="13" r="2.4" fill="#c9a25a"/></svg>`},
+ {id:'leaf',name:'菩提一葉',svg:`<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="64" fill="#efe6d2"/><path d="M32 60c-.6-4-2-6.5-6-9.5C13 41 8 30 13 20c4.5-9 14-10 19-4 5-6 14.5-5 19 4 5 10 0 21-13 30.5-4 3-5.4 5.5-6 9.5z" fill="#4c7a4f"/><path d="M32 18v36M32 28c-4-3-8-4-12-3M32 28c4-3 8-4 12-3M32 37c-4-3-9-3-13-1M32 37c4-3 9-3 13-1M32 45c-3-2-6-2-9-1M32 45c3-2 6-2 9-1" fill="none" stroke="#e7d9a8" stroke-width="1.4" stroke-linecap="round"/></svg>`},
+ {id:'word',name:'念字印',svg:`<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="gW" cx="40%" cy="35%" r="75%"><stop offset="0" stop-color="#c8493a"/><stop offset="1" stop-color="#8f2a20"/></radialGradient></defs><rect width="64" height="64" fill="#efe6d2"/><rect x="5" y="5" width="54" height="54" rx="8" fill="url(#gW)"/><rect x="9" y="9" width="46" height="46" rx="5" fill="none" stroke="#f7ead6" stroke-width="1.2" stroke-dasharray="1.5 2"/><rect x="13" y="13" width="38" height="38" rx="3" fill="none" stroke="#f7ead6" stroke-width=".7" opacity=".6"/><text x="32" y="43" text-anchor="middle" font-size="30" font-family="'LXGW WenKai TC','Kaiti TC','STKaiti','KaiTi',serif" font-weight="700" fill="#fbf1e0">念</text></svg>`}
+];
+
+/* ================= state ================= */
+const DEF={theme:'paper',logo:'seal',size:38,lh:'1.7',para:'.8em',align:'center',font:'serif',wm:'h',showReading:true,rate:0.9,zhVoice:'',enVoice:'',autoFront:false,autoBack:false,gap:1.5,repeat:1,frontOnly:false,wake:true,bg:true,scope:'due',newPerDay:20,intro:false,tap:'reveal'};
+let S={ver:2,cards:[],decks:{},set:{...DEF},log:{},newLog:{}};let BAD=false;
+try{const r=JSON.parse(localStorage.getItem(KEY));if(r&&Array.isArray(r.cards)){S={...S,...r,set:{...DEF,...r.set},log:r.log||{},newLog:r.newLog||{},decks:r.decks||{}};
+  if(S.set.theme==='night')S.set.theme='ink';if(S.set.theme==='bamboo')S.set.theme='celadon';
+  if(r.ver!==2){const nl={};Object.keys(S.log).forEach(k=>{const p=k.split('-');if(p.length===3)nl[+p[0]+'-'+(+p[1])+'-'+(+p[2])]=S.log[k];});S.log=nl;S.ver=2;}}}catch(e){BAD=true;try{localStorage.setItem(KEY+'.corrupt.'+Date.now(),localStorage.getItem(KEY));}catch(_){}}
+let warnT=0;
+function save(){if(BAD)return;try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){if(Date.now()-warnT>60000){warnT=Date.now();const full=e&&(e.name==='QuotaExceededError'||e.code===22);toast(full?'儲存空間已滿，這次的變更沒有存到，請先到「卡組」匯出備份':'無法儲存，關閉後變更會消失，請先到「卡組」匯出備份');}}}
+try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist();}catch(e){}
+
+/* ================= toast / modal ================= */
+let tT;function toast(m,act,fn){$('#toastMsg').textContent=m;const a=$('#toastAct');if(act){a.style.display='';a.textContent=act;a.onclick=()=>{fn();$('#toast').classList.remove('on');};}else a.style.display='none';$('#toast').classList.add('on');clearTimeout(tT);tT=setTimeout(()=>$('#toast').classList.remove('on'),act?4500:2200);}
+function modal(html,mount){$('#modal').innerHTML=html;$('#mask').classList.add('on');mount&&mount($('#modal'));}
+function close(){$('#mask').classList.remove('on');}
+$('#mask').addEventListener('click',e=>{if(e.target.id==='mask')close();});
+function confirmBox(msg,ok){modal(`<h3>請確認</h3><p>${esc(msg)}</p><div class="row" style="justify-content:flex-end;margin-top:14px"><button class="btn" id="mN">取消</button><button class="btn pri" id="mY" style="background:var(--bad);border-color:var(--bad);color:#fff">確定</button></div>`,m=>{m.querySelector('#mN').onclick=close;m.querySelector('#mY').onclick=()=>{close();ok();};});}
+
+/* ================= appearance ================= */
+function setIcon(){
+  const L=LOGOS.find(l=>l.id===S.set.logo)||LOGOS[0];
+  $('#mastLogo').innerHTML=L.svg;
+  const url='data:image/svg+xml,'+encodeURIComponent(L.svg);$('#favicon').href=url;
+}
+function apply(){
+  const s=S.set,r=document.documentElement.style;
+  document.body.dataset.theme=s.theme;document.body.classList.toggle('vert',s.wm==='v');
+  const mc={paper:'#f3ecdf',ink:'#121417',celadon:'#dfe9e2',umber:'#e7d9c4',stone:'#dcdedf',albion:'#d6e1ec'}[s.theme]||'#f3ecdf';document.querySelector('meta[name=theme-color]').content=mc;
+  r.setProperty('--size',s.size+'px');r.setProperty('--lh',s.lh);r.setProperty('--para',s.para);r.setProperty('--align',s.wm==='v'?'left':s.align);r.setProperty('--wm',s.wm==='v'?'vertical-rl':'horizontal-tb');
+  r.setProperty('--font',{serif:"'Noto Serif TC',serif",kai:"'LXGW WenKai TC','Noto Serif TC',serif",sans:"'Noto Sans TC',sans-serif"}[s.font]);
+  $$('#themes button').forEach(b=>b.classList.toggle('on',b.dataset.t===s.theme));
+  $$('#logos button').forEach(b=>b.classList.toggle('on',b.dataset.l===s.logo));
+  $('#size').value=s.size;$('#sizeV').textContent=s.size;
+  [['#szSeg','size'],['#fontSeg','font'],['#wmSeg','wm'],['#lhSeg','lh'],['#paraSeg','para'],['#alignSeg','align'],['#tapSeg','tap'],['#pRepeat','repeat']].forEach(([id,k])=>$$(id+' button').forEach(b=>b.classList.toggle('on',String(b.dataset.v)===String(s[k]))));
+  $$('#pScope button').forEach(b=>b.classList.toggle('on',b.dataset.s===s.scope));
+  ['showReading','autoFront','autoBack'].forEach(k=>$('#'+k).checked=s[k]);
+  $('#pFrontOnly').checked=s.frontOnly;$('#pWake').checked=s.wake;$('#pBg').checked=s.bg;
+  $('#rate').value=s.rate;$('#rateV').textContent=(+s.rate).toFixed(2);$('#pGap').value=s.gap;$('#pGapV').textContent=s.gap;$('#newPerDay').value=s.newPerDay;
+}
+function setS(k,v){S.set[k]=v;save();apply();}
+$('#logos').innerHTML=LOGOS.map(l=>`<button data-l="${l.id}"><div class="lg">${l.svg}</div><span>${l.name}</span></button>`).join('');
+$$('#logos button').forEach(b=>b.onclick=()=>{setS('logo',b.dataset.l);setIcon();});
+$$('#themes button').forEach(b=>b.onclick=()=>setS('theme',b.dataset.t));
+$('#themeQuick').onclick=()=>{const t=['paper','ink','celadon','umber','stone','albion'];setS('theme',t[(t.indexOf(S.set.theme)+1)%t.length]);};
+$('#size').oninput=e=>setS('size',+e.target.value);
+[['#szSeg','size',Number],['#fontSeg','font'],['#wmSeg','wm'],['#lhSeg','lh'],['#paraSeg','para'],['#alignSeg','align'],['#tapSeg','tap'],['#pRepeat','repeat',Number]].forEach(([id,k,cv])=>$$(id+' button').forEach(b=>b.onclick=()=>setS(k,cv?cv(b.dataset.v):b.dataset.v)));
+['showReading','autoFront','autoBack'].forEach(k=>$('#'+k).onchange=e=>setS(k,e.target.checked));
+$('#rate').oninput=e=>setS('rate',+e.target.value);
+$('#pFrontOnly').onchange=e=>setS('frontOnly',e.target.checked);
+$('#pGap').oninput=e=>setS('gap',+e.target.value);
+$('#pWake').onchange=e=>{setS('wake',e.target.checked);if(P.on)wake(e.target.checked);};
+$('#pBg').onchange=e=>{setS('bg',e.target.checked);if(P.on)bgAudio(e.target.checked);};
+$$('#pScope button').forEach(b=>b.onclick=()=>{setS('scope',b.dataset.s);P.list=null;P.idx=0;renderPlay(false);});
+$('#newPerDay').onchange=e=>{setS('newPerDay',Math.max(1,Math.min(500,+e.target.value||20)));refreshAll();};
+
+/* ================= TTS ================= */
+const synth=window.speechSynthesis;let voices=[];
+function loadVoices(){if(!synth)return;voices=synth.getVoices();
+  const fill=(sel,re,k)=>{const seen=new Set();sel.innerHTML='<option value="">系統預設</option>'+voices.filter(v=>re.test(v.lang)).filter(v=>{const key=v.name+'|'+v.lang;if(seen.has(key))return false;seen.add(key);return true;}).map(v=>`<option value="${esc(v.name)}">${esc(v.name)}（${esc(v.lang)}）</option>`).join('');sel.value=S.set[k]||'';};
+  fill($('#zhVoice'),/^(zh|cmn)/i,'zhVoice');fill($('#enVoice'),/^en/i,'enVoice');}
+if(synth){loadVoices();synth.onvoiceschanged=loadVoices;}
+$('#zhVoice').onchange=e=>setS('zhVoice',e.target.value);$('#enVoice').onchange=e=>setS('enVoice',e.target.value);
+const isZh=t=>/[㄀-ㄯ㐀-鿿豈-﫿]/.test(t);
+let gen=0;
+const UT=[];
+function stopSpeak(){gen++;try{synth&&synth.cancel();}catch(e){}}
+function speak(text){return new Promise(res=>{
+  if(!synth||!text||!String(text).trim())return res();
+  stopSpeak();const g=gen;
+  const chunks=String(text).replace(/\n+/g,'。').split(/(?<=[。！？；!?;.，,、])/).reduce((a,c)=>{if(a.length&&(a[a.length-1]+c).length<80)a[a.length-1]+=c;else a.push(c);return a;},[]).filter(c=>c.trim());
+  let i=0;const next=()=>{if(g!==gen||i>=chunks.length)return res();const t=chunks[i++],zh=isZh(t);const u=new SpeechSynthesisUtterance(t);UT.push(u);if(UT.length>30)UT.shift();u.lang=zh?'zh-TW':'en-US';u.rate=S.set.rate;const v=voices.find(x=>x.name===(zh?S.set.zhVoice:S.set.enVoice));if(v){u.voice=v;u.lang=v.lang;}u.onend=next;u.onerror=e=>{if(e&&e.error&&!['interrupted','canceled'].includes(e.error))toast('念讀失敗（'+e.error+'），請檢查裝置音量或語音設定');next();};setTimeout(()=>{if(g!==gen)return;try{synth.speak(u);}catch(e){toast('此裝置無法念讀');res();}},40);};next();});}
+/* ================= deck settings, reading dictionary ================= */
+const HINTS={cloze:'漸進挖空',first:'首字提示',prev:'只給上句',none:'全部隱藏'};
+function dset(d){return {mode:'qa',hint:'cloze',dict:'',rmode:'loop',...(S.decks[d]||{})};}
+const isRec=c=>{const m=dset(deckOf(c)).mode;return m==='recite'||m==='solo'||(m==='qa'&&!c.back);};
+const isSeq=c=>dset(deckOf(c)).mode==='recite';
+const isSolo=c=>{const m=dset(deckOf(c)).mode;return m==='solo'||(m==='qa'&&!c.back);};
+function dictApply(c,t){const dict=dset(deckOf(c)).dict;if(!dict||!t)return t;dict.split('\n').forEach(l=>{const m=l.split(/[=＝]/);if(m.length===2&&m[0].trim())t=t.split(m[0].trim()).join(m[1].trim());});return t;}
+const sayF=c=>speak(c.reading||dictApply(c,c.front)),sayB=c=>speak(c.backReading||dictApply(c,c.back));
+const recTarget=c=>c.back?c.back:c.front;
+function recContext(c){if(isSolo(c))return '';if(c.back)return c.front;const p=S.cards.find(x=>deckOf(x)===deckOf(c)&&x.idx===c.idx-1);return p?recTarget(p):'';}
+const sayT=c=>c.back?sayB(c):sayF(c);
+const sayAll=c=>isRec(c)?sayT(c):speak((c.reading||dictApply(c,c.front))+'。'+(c.backReading||dictApply(c,c.back)));
+$('#ttsTestBtn').onclick=()=>synth?speak($('#ttsTest').value):toast('此瀏覽器不支援語音念讀');
+
+/* ================= scheduling ================= */
+const deckOf=c=>c.deck||'未分類';
+function decks(){return [...new Set(S.cards.map(deckOf))].sort((a,b)=>a.localeCompare(b,'zh-Hant'));}
+function pruneDecks(){const have=new Set(S.cards.map(deckOf));Object.keys(S.decks).forEach(k=>{if(!have.has(k))delete S.decks[k];});}
+const inDeck=(c,d)=>!d||deckOf(c)===d;
+let curDeck='';
+function newLeft(){return Math.max(0,S.set.newPerDay-(S.newLog[today()]||0));}
+function ordCmp(a,b){if(isSeq(a)&&isSeq(b)&&deckOf(a)===deckOf(b))return (a.idx||0)-(b.idx||0);return 0;}
+function queue(d=curDeck){const n=Date.now();
+  const rev=S.cards.filter(c=>!isSeq(c)&&inDeck(c,d)&&c.reviews>0&&c.due<=n);
+  rev.sort((a,b)=>a.due-b.due||deckOf(a).localeCompare(deckOf(b)));
+  const nw=S.cards.filter(c=>!isSeq(c)&&inDeck(c,d)&&!c.reviews).sort((a,b)=>a.created-b.created).slice(0,newLeft());
+  return rev.concat(nw);}
+function nextGap(c,g){if(g===0)return IV[0];if(g===1)return IV[Math.min(c.stage,MAXS-1)];return c.stage+1>=MAXS?KEEP:IV[c.stage+1];}
+$('#undoBtn').onclick=undo;
+function streak(){let t=Date.now(),n=0;if(!S.log[dkey(t)])t-=D;while(S.log[dkey(t)]>0){n++;t-=D;}return n;}
+
+/* ================= card component ================= */
+function beads(c){let s='';for(let i=0;i<MAXS;i++)s+=`<i class="${i<c.stage?'f':''}"></i>`;return `<div class="beads" title="${c.stage>=MAXS?'已熟記':'階段 '+c.stage+'/'+MAXS}">${s}</div>`;}
+const sealOf=c=>`<span class="seal">${esc(deckOf(c).replace(/（.*?）|\(.*?\)/g,'').split(/[・｜|]/)[0].trim().slice(0,4))}</span>`;
+function cardHTML(c,id,rev){
+  const rd=S.set.showReading&&c.reading?`<div class="rtext">${esc(c.reading)}</div>`:'';
+  const fm=rev&&S.set.tap==='flip';const ans=rev&&!fm?`<div class="ansbox"><div class="btext">${para(c.back)}</div></div>`:'';
+  return `<div class="card3d"><div class="flip${rev?' on':''}" id="${id}">
+   <div class="face front"><div class="top">${sealOf(c)}${beads(c)}</div><div class="content">${fm?`<div class="qsmall">${esc(c.front)}</div><div class="btext">${para(c.back)}</div>`:`<div class="ftext">${para(c.front)}</div>${rd}${ans}`}</div>${rev?'':`<div class="hint">${S.set.tap==='btn'?'請按下方「看答案」':'輕 觸 看 答 案'}</div>`}<button class="spk" data-spk="${rev?'b':'f'}" aria-label="念讀">${ICON.spk}</button></div>
+  </div></div>`;
+}
+function hashN(s){let h=2166136261;for(const ch of s){h^=ch.charCodeAt(0);h=Math.imul(h,16777619);}return h>>>0;}
+const isTextCh=ch=>/[\p{L}\p{N}]/u.test(ch);
+function maskText(c,t,revealed){
+  const hint=dset(deckOf(c)).hint,chars=[...t],idxs=[];chars.forEach((ch,i)=>{if(isTextCh(ch))idxs.push(i);});
+  if(hint==='none'&&!revealed)return `<span class="blankline">（請背出這一句，共 ${idxs.length} 字）</span>`;
+  const hide=new Set();
+  if(hint==='cloze'){const r=Math.min(1,.3+c.stage*.15),n=Math.max(1,Math.round(idxs.length*r));let h=hashN(c.id+':'+c.stage+':'+(SES.seen[c.id]||0))||1;const pool=idxs.slice();
+    for(let k=pool.length-1;k>0;k--){h^=h<<13;h^=h>>>17;h^=h<<5;h>>>=0;const j=h%(k+1);[pool[k],pool[j]]=[pool[j],pool[k]];}pool.slice(0,n).forEach(i=>hide.add(i));}
+  else if(hint==='first')idxs.slice(1).forEach(i=>hide.add(i));
+  else idxs.forEach(i=>hide.add(i));
+  return chars.map((ch,i)=>ch==='\n'?'<br>':hide.has(i)?(revealed?`<span class="fill">${esc(ch)}</span>`:'<span class="gap"></span>'):esc(ch)).join('');
+}
+function recHTML(c,id,revealed){
+  const ctx=recContext(c),t=recTarget(c),h=dset(deckOf(c)).hint;
+  const solo=isSolo(c),pos=(c.back||solo)?'':`<span class="pos">第 ${(c.idx||0)+1} 句</span>`;
+  return `<div class="card3d"><div class="flip rec" id="${id}"><div class="face front">
+    <div class="top">${sealOf(c)}${beads(c)}</div>
+    <div class="content">${solo?'':ctx?`<div class="ctx">${para(ctx)}</div>`:`<div class="ctx">（經文開頭）</div>`}${pos}
+      <div class="ttext">${maskText(c,t,revealed)}</div></div>
+    ${revealed?`<button class="spk" data-spk aria-label="念讀">${ICON.spk}</button>`:`<div class="hint">${HINTS[h]}・${S.set.tap==='btn'?'請按下方「顯示經文」':'輕觸顯示經文'}</div>`}
+  </div></div></div>`;
+}
+const anyCard=(c,id,rev)=>isRec(c)?recHTML(c,id,rev):cardHTML(c,id,rev);
+
+/* ================= study session ================= */
+let flipped=false,curId=null,STUDY_REQ=null,emptyT=null;
+const SES={id:0,list:[],total:0,practice:false,fz:new Set(),seen:{}};
+const UNDO=[];
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+const recCardsOf=d=>S.cards.filter(c=>deckOf(c)===d&&isSeq(c)).sort((a,b)=>(a.idx||0)-(b.idx||0));
+function dailyIdx(d){const cs=recCardsOf(d),st=dset(d),n=cs.length;if(!n)return {n:0,idx:0,done:false};const done=st.doneDay===today();return {n,done,idx:done?((st.pos||0)-1+n)%n:((st.pos||0)%n)};}
+function buildRecSession(again){
+  const d=curDeck,cs=recCardsOf(d),st=dset(d),n=cs.length;
+  SES.rmode=st.rmode==='daily'?'daily':'loop';SES.again=!!again;
+  if(!n){SES.list=[];SES.total=0;return;}
+  if(SES.rmode==='loop'){const pos=((st.pos||0)%n+n)%n;SES.list=cs.slice(pos).concat(cs.slice(0,pos)).map(c=>c.id);SES.total=n;}
+  else{const di=dailyIdx(d);if(!again&&di.done){SES.list=[];SES.total=0;}else{SES.list=[cs[di.idx].id];SES.total=1;}}
+}
+function recGrade(c){
+  S.log[today()]=(S.log[today()]||0)+1;
+  const d=curDeck,cs=recCardsOf(d),n=cs.length,st=dset(d),k=cs.findIndex(x=>x.id===c.id);
+  SES.list.shift();
+  if(SES.rmode==='loop'){SES.list.push(c.id);S.decks[d]={...st,pos:(k+1)%n};save();}
+  else if(!SES.again){S.decks[d]={...st,pos:(k+1)%n,doneDay:today()};save();toast('今天完成，明天換下一句');}
+  stopSpeak();renderStudy();refreshToday();
+}
+function buildSession(practice,ids){
+  SES.id++;SES.practice=!!practice;SES.rmode=null;SES.fz=new Set();SES.seen={};UNDO.length=0;curId=null;flipped=false;
+  let cs;
+  if(practice){cs=ids?S.cards.filter(c=>ids.includes(c.id)):S.cards.filter(c=>inDeck(c,curDeck));
+    const rec=cs.filter(isSeq).sort((a,b)=>deckOf(a).localeCompare(deckOf(b))||(a.idx||0)-(b.idx||0));
+    cs=shuffle(cs.filter(c=>!isSeq(c))).concat(rec);}
+  else if(recCardsOf(curDeck).length){buildRecSession(false);$('#undoBtn').disabled=true;return;}
+  else cs=queue(curDeck);
+  SES.list=cs.map(c=>c.id);SES.total=SES.list.length;
+  $('#undoBtn').disabled=true;
+}
+const shortOf=c=>{const t=((isRec(c)?recTarget(c):c.front)||'').replace(/\s+/g,' ');return t.length>12?t.slice(0,12)+'…':t;};
+const cdFmt=ms=>{if(ms>=H)return fmt(ms);const s=Math.max(0,Math.ceil(ms/1000));return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');};
+function nextDue(d=curDeck){const n=Date.now();let m=null;S.cards.forEach(c=>{if(!isSeq(c)&&inDeck(c,d)&&c.reviews>0&&c.due>n&&(!m||c.due<m.due))m=c;});return m;}
+function sesCard(){while(SES.list.length){const c=S.cards.find(x=>x.id===SES.list[0]);if(c)return c;SES.list.shift();}return null;}
+
+function renderEmpty(area,done){
+  curId=null;
+  if(SES.rmode){
+    const d=curDeck,n=recCardsOf(d).length;
+    if(!n){area.innerHTML=`<div class="empty"><h3>這組還沒有經文</h3><p class="muted">到「卡組」或匯入頁新增整段經文。</p></div>`;return;}
+    if(SES.rmode==='daily'){const di=dailyIdx(d);
+      area.innerHTML=`<div class="empty"><svg class="ens" viewBox="0 0 64 64"><path d="M44.5 13.5A21 21 0 1 0 52 30" fill="none" stroke="var(--ink)" stroke-width="5" stroke-linecap="round"/></svg><h3>今天這句背完了</h3><p class="muted">今天是第 ${di.idx+1} 句（共 ${n} 句）<br>明天會換到下一句。</p><div class="row" style="justify-content:center;margin-top:16px"><button class="btn" id="againDy">再背一次今天這句</button></div></div>`;
+      $('#againDy').onclick=()=>{buildRecSession(true);renderStudy();};}
+    return;
+  }
+  if(!S.cards.length){area.innerHTML=`<div class="empty"><h3>還沒有卡片</h3><p class="muted">到「卡組」挑一組，或匯入自己的內容。</p><button class="btn pri" id="goMk" style="margin-top:12px">前往卡組</button></div>`;$('#goMk').onclick=()=>go('market');return;}
+  const sub=S.cards.filter(c=>inDeck(c,curDeck)),waitingNew=sub.filter(c=>!c.reviews).length,pr=SES.practice;
+  const title=pr?'這一輪練習完成':SES.total?'本輪複習完成':'目前沒有到期的卡片';
+  const lines=pr?[`練習了 ${SES.total} 張，這不會改變複習排程。`]:[...(SES.total?[`這一輪複習了 ${SES.total} 張。`]:[]),`今天累計答題 ${done} 次。`];
+  const nx=pr?null:nextDue();
+  area.innerHTML=`<div class="empty"><svg class="ens" viewBox="0 0 64 64"><path d="M44.5 13.5A21 21 0 1 0 52 30" fill="none" stroke="var(--ink)" stroke-width="5" stroke-linecap="round"/></svg><h3>${title}</h3><p class="muted">${lines.join('<br>')}</p>
+   ${nx?`<p class="muted" style="margin-top:10px">下一張將在 <b id="cd"></b> 後到期<br><span class="tiny">時間到了，這裡會自動出現新的卡片</span></p>`:''}
+   ${!pr&&waitingNew?`<p class="tiny muted">另有 ${waitingNew} 張新卡，明天會繼續出現</p>`:''}
+   <div class="row" style="justify-content:center;margin-top:16px">${pr?'<button class="btn pri" id="againPr">再練一輪</button><button class="btn" id="backSrs">回到排程複習</button>':'<button class="btn pri" id="goPr">自由練習這些卡</button>'+(waitingNew?'<button class="btn" id="moreNew">再學 10 張新卡</button>':'')}</div></div>`;
+  const on=(id,f)=>{const e=$(id);if(e)e.onclick=f;};
+  on('#againPr',()=>{buildSession(true);renderStudy();});
+  on('#backSrs',()=>{buildSession(false);renderStudy();});
+  on('#goPr',()=>{buildSession(true);renderStudy();});
+  on('#moreNew',()=>{S.newLog[today()]=(S.newLog[today()]||0)-10;save();buildSession(false);renderStudy();refreshToday();});
+  if(nx){const tick=()=>{const el=$('#cd');if(!el){clearInterval(emptyT);return;}
+      const q=queue(curDeck);if(q.length){clearInterval(emptyT);buildSession(false);renderStudy();refreshToday();toast(`有 ${q.length} 張卡片到期了`);return;}
+      const n2=nextDue();if(!n2){clearInterval(emptyT);return;}el.textContent=cdFmt(n2.due-Date.now());};
+    tick();emptyT=setInterval(tick,1000);}
+}
+function renderStudy(){
+  clearInterval(emptyT);emptyT=null;
+  const area=$('#studyArea'),c=sesCard(),done=S.log[today()]||0;
+  $$('#modeSeg2 button').forEach(b=>b.classList.toggle('on',(b.dataset.m==='practice')===SES.practice));
+  const rcs=SES.rmode?recCardsOf(curDeck):null;
+  $('#prog').style.width=SES.rmode?(c&&SES.rmode==='loop'?((rcs.findIndex(x=>x.id===c.id)+1)/rcs.length*100):(c?100:0))+'%':(SES.total?(1-SES.list.length/SES.total)*100:(c?0:100))+'%';
+  if(!c){renderEmpty(area,done);return;}
+  const isNew=c.id!==curId;if(isNew){flipped=false;curId=c.id;}
+  const rec=isRec(c),pr=SES.practice,again=(SES.seen[c.id]||0)>0,fzNext=!SES.fz.has(c.id);
+  const rIdx=SES.rmode&&c?rcs.findIndex(x=>x.id===c.id)+1:0;
+  const grades=SES.rmode?`<div class="grades one"><button style="--c:var(--ok)" data-g="next"><kbd>1</kbd><b>${SES.rmode==='loop'?'下一句':'今天背完了'}</b><small>${SES.rmode==='loop'?'循環不消失，不影響排程':'明天換下一句'}</small></button></div>`:pr?`<div class="grades two">
+     <button style="--c:var(--mid)" data-g="0"><kbd>1</kbd><b>還不熟</b><small>稍後再練</small></button>
+     <button style="--c:var(--ok)" data-g="2"><kbd>2</kbd><b>會了</b><small>這張完成</small></button></div>`
+   :`<div class="grades">
+     <button style="--c:var(--bad)" data-g="0"><kbd>1</kbd><b>忘了</b><small>稍後再考</small></button>
+     <button style="--c:var(--mid)" data-g="1"><kbd>2</kbd><b>模糊</b><small>${fzNext?'稍後再看一次':fmt(nextGap(c,1))+'後'}</small></button>
+     <button style="--c:var(--ok)" data-g="2"><kbd>3</kbd><b>記得</b><small>${fmt(nextGap(c,2))}後</small></button></div>`;
+  $('#kbdHint').textContent=SES.rmode?'鍵盤：空白鍵翻面 · 1 '+(SES.rmode==='loop'?'下一句':'今天背完了')+' · S 念讀 · Ctrl+Z 復原':pr?'鍵盤：空白鍵翻面 · 1 還不熟 · 2 會了 · S 念讀 · Ctrl+Z 復原':'鍵盤：空白鍵翻面 · 1 忘了 · 2 模糊 · 3 記得 · S 念讀 · Ctrl+Z 復原';
+  const tail=SES.rmode?`${SES.rmode==='loop'?'輪播':'每日一句'} · 第 ${rIdx}/${rcs.length} 句`:`剩 ${SES.list.length} 張`+(pr?' · 自由練習':'')+(!pr&&!c.reviews?' · 新卡':'')+(again?' · 本輪再考':'')+(rec?' · 經文背誦':'');
+  const rbar=SES.rmode&&c?`<div class="rmbar"><b>${SES.rmode==='loop'?'輪播':'每日一句'}</b>・${HINTS[dset(deckOf(c)).hint]}・第 ${rIdx}/${rcs.length} 句｜${SES.rmode==='loop'?'「下一句」循環，不消失':'今天背完即完成，明天換句'}</div>`:'';
+  area.innerHTML=rbar+anyCard(c,'sCard',flipped)+(flipped?grades+(pr||SES.rmode?'':'<p class="tiny muted" style="text-align:center;margin:10px 0 0">忘了、模糊的卡，這一輪還會再出現。</p>'):`<button class="btn pri big showans" id="showAns">${rec?'顯示經文':'看答案'}</button>`)+`<p class="tiny muted" style="text-align:center;margin-top:12px">${tail}</p>`;
+  const fl=$('#sCard');
+  const doFlip=()=>{if(flipped)return;flipped=true;renderStudy();if(S.set.autoBack)rec?sayT(c):sayB(c);};
+  fl.onclick=e=>{if(e.target.closest('[data-spk]'))return;if(S.set.tap==='btn')return;if(!flipped)doFlip();};
+  const sa=$('#showAns');if(sa)sa.onclick=doFlip;
+  area.querySelectorAll('[data-spk]').forEach(b=>b.onclick=e=>{e.stopPropagation();if(rec)sayT(c);else if(b.dataset.spk==='f')sayF(c);else sayAll(c);});
+  $$('.grades [data-g]').forEach(b=>b.onclick=()=>doGrade(c,+b.dataset.g));
+  if(isNew&&S.set.autoFront&&$('#v-study').classList.contains('on')){if(!rec)sayF(c);else{const x=recContext(c);if(x)speak(dictApply(c,x));}}
+}
+function doGrade(c,g){
+  if(SES.rmode){recGrade(c);return;}
+  const pr=SES.practice,entry={id:c.id,sid:SES.id,day:today(),snap:null,wasNew:false,before:{list:SES.list.slice(),fz:[...SES.fz],seen:{...SES.seen}}};
+  let msg;SES.list.shift();SES.seen[c.id]=(SES.seen[c.id]||0)+1;
+  if(pr){if(g===0){SES.list.splice(Math.min(3,SES.list.length),0,c.id);msg='稍後再練一次';}else msg='這張完成';}
+  else{
+    entry.snap={stage:c.stage,due:c.due,reviews:c.reviews,last:c.last};entry.wasNew=!c.reviews;
+    const gap=nextGap(c,g);
+    if(g===0)c.stage=0;else if(g===2)c.stage=Math.min(MAXS,c.stage+1);
+    if(!c.reviews)S.newLog[today()]=(S.newLog[today()]||0)+1;
+    {let du=Date.now()+gap;if(gap>=D){const x=new Date(du);x.setHours(0,0,0,0);du=+x;}c.due=du;}c.reviews=(c.reviews||0)+1;c.last=Date.now();S.log[today()]=(S.log[today()]||0)+1;save();
+    if(g===0){SES.list.splice(Math.min(3,SES.list.length),0,c.id);msg='稍後再考一次';}
+    else if(g===1&&!SES.fz.has(c.id)){SES.fz.add(c.id);SES.list.push(c.id);msg='本輪稍後再看一次';}
+    else msg=fmt(gap)+'後再複習';
+  }
+  UNDO.push(entry);if(UNDO.length>30)UNDO.shift();$('#undoBtn').disabled=false;
+  stopSpeak();renderStudy();refreshToday();
+  toast(`${shortOf(c)}：${msg}`,'復原',undo);
+}
+function undo(){
+  const e=UNDO.pop();if(!e||e.sid!==SES.id){$('#undoBtn').disabled=!UNDO.length;return;}
+  const c=S.cards.find(x=>x.id===e.id);
+  if(c&&e.snap){Object.assign(c,e.snap);S.log[e.day]=Math.max(0,(S.log[e.day]||1)-1);if(e.wasNew)S.newLog[e.day]=(S.newLog[e.day]||0)-1;save();}
+  SES.list=e.before.list;SES.fz=new Set(e.before.fz);SES.seen=e.before.seen;
+  curId=null;$('#undoBtn').disabled=!UNDO.length;$('#toast').classList.remove('on');renderStudy();refreshToday();
+}
+$$('#modeSeg2 button').forEach(b=>b.onclick=()=>{buildSession(b.dataset.m==='practice');renderStudy();});
+document.addEventListener('keydown',e=>{
+  if(!$('#v-study').classList.contains('on')||/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)||$('#mask').classList.contains('on'))return;
+  if((e.metaKey||e.ctrlKey)&&e.key==='z'){e.preventDefault();undo();return;}
+  const c=S.cards.find(x=>x.id===curId);if(!c)return;
+  if(e.key===' '||e.key==='Enter'){e.preventDefault();if(!flipped)$('#sCard').click();}
+  else if(flipped&&SES.practice&&(e.key==='1'||e.key==='2'))doGrade(c,e.key==='1'?0:2);
+  else if(flipped&&!SES.practice&&['1','2','3'].includes(e.key))doGrade(c,+e.key-1);
+  else if(e.key==='s'||e.key==='S'){if(flipped)sayAll(c);else if(isRec(c)){const x=recContext(c);if(x)speak(dictApply(c,x));}else sayF(c);}
+});
+
+/* ================= player ================= */
+const P={on:false,idx:0,list:null,token:0};
+function playList(){if(S.set.scope==='due'){const q=queue();if(q.length)return q;}
+  return S.cards.filter(c=>inDeck(c,curDeck)).sort((a,b)=>deckOf(a).localeCompare(deckOf(b))||ordCmp(a,b)||a.created-b.created);}
+function renderPlay(back){
+  if(!P.list)P.list=playList();const L=P.list;
+  $('#pPlay').innerHTML=P.on?ICON.pause:ICON.play;
+  if(!L.length){$('#playCard').innerHTML='<div class="empty"><h3>沒有卡片</h3><p class="muted">換個卡組或改播「全部」。</p></div>';$('#pIdx').textContent='';return;}
+  if(P.idx>=L.length)P.idx=0;const c=L[P.idx];
+  const spk=e=>{if(e.target.closest('[data-spk]')){e.stopPropagation();sayAll(c);return true;}};
+  if(isRec(c)){const was=$('#pCard');const open=back===undefined?(was&&was.dataset.open==='1'):back;
+    $('#playCard').innerHTML=recHTML(c,'pCard',open);const el=$('#pCard');el.dataset.id=c.id;el.dataset.open=open?'1':'0';
+    el.onclick=e=>{if(spk(e))return;if(!P.on)renderPlay(el.dataset.open!=='1');};}
+  else{const ex=$('#pCard');
+    if(!ex||ex.dataset.id!==c.id||ex.classList.contains('rec')){$('#playCard').innerHTML=cardHTML(c,'pCard');$('#pCard').dataset.id=c.id;$('#pCard').onclick=e=>{if(spk(e))return;if(!P.on){const a=$('#pCard').querySelector('.ansbox');if(a)a.remove();else $('#pCard').querySelector('.content').insertAdjacentHTML('beforeend',`<div class="ansbox"><div class="btext">${para(c.back)}</div></div>`);}};}
+    if(back!==undefined)requestAnimationFrame(()=>$('#pCard').classList.toggle('on',!!back&&!S.set.frontOnly));}
+  $('#pIdx').textContent=(P.idx+1)+' / '+L.length;
+  if('mediaSession' in navigator){try{navigator.mediaSession.metadata=new MediaMetadata({title:recTarget(c).slice(0,40),artist:'念念 · '+deckOf(c),album:'連續念讀'});navigator.mediaSession.playbackState=P.on?'playing':'paused';}catch(e){}}
+}
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+async function loop(tk){while(P.on&&tk===P.token){const L=P.list;if(!L||!L.length){pause();return;}const c=L[P.idx];
+  for(let r=0;r<S.set.repeat&&tk===P.token;r++){
+    if(isRec(c)){renderPlay(false);await sleep(S.set.gap*1000);if(tk!==P.token)return;renderPlay(true);await sayT(c);if(tk!==P.token)return;await sleep(S.set.gap*1000);if(tk!==P.token)return;continue;}
+    renderPlay(false);await sayF(c);if(tk!==P.token)return;await sleep(S.set.gap*1000);if(tk!==P.token)return;
+    if(!S.set.frontOnly){renderPlay(true);await sleep(450);await sayB(c);if(tk!==P.token)return;await sleep(S.set.gap*1000);if(tk!==P.token)return;}}
+  P.idx=(P.idx+1)%L.length;}}
+function play(){if(!synth)return toast('此瀏覽器不支援語音念讀');P.list=P.list||playList();if(!P.list.length)return;P.on=true;P.token++;wake(S.set.wake);bgAudio(S.set.bg);renderPlay(false);loop(P.token);}
+function pause(){P.on=false;P.token++;stopSpeak();renderPlay();}
+function stopPlay(){if(P.on)pause();wake(false);bgAudio(false);}
+function step(d){const L=P.list||playList();if(!L.length)return;P.idx=(P.idx+d+L.length)%L.length;if(P.on){P.token++;stopSpeak();loop(P.token);}else renderPlay(false);}
+
+$('#pPlay').onclick=()=>P.on?pause():play();$('#pNext').onclick=()=>step(1);$('#pPrev').onclick=()=>step(-1);
+if('mediaSession' in navigator){try{navigator.mediaSession.setActionHandler('play',play);navigator.mediaSession.setActionHandler('pause',pause);navigator.mediaSession.setActionHandler('nexttrack',()=>step(1));navigator.mediaSession.setActionHandler('previoustrack',()=>step(-1));}catch(e){}}
+let wl=null;
+async function wake(on){try{if(on&&'wakeLock' in navigator){if(!wl){wl=await navigator.wakeLock.request('screen');wl.addEventListener('release',()=>wl=null);}}else if(wl){await wl.release();wl=null;}}catch(e){}}
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'){if(P.on&&S.set.wake)wake(true);refreshToday();}});
+let silent=null;
+function silentURL(){const n=8000,b=new ArrayBuffer(44+n),v=new DataView(b),w=(o,s)=>[...s].forEach((ch,i)=>v.setUint8(o+i,ch.charCodeAt(0)));w(0,'RIFF');v.setUint32(4,36+n,true);w(8,'WAVE');w(12,'fmt ');v.setUint32(16,16,true);v.setUint16(20,1,true);v.setUint16(22,1,true);v.setUint32(24,8000,true);v.setUint32(28,8000,true);v.setUint16(32,1,true);v.setUint16(34,8,true);w(36,'data');v.setUint32(40,n,true);for(let i=0;i<n;i++)v.setUint8(44+i,128);return URL.createObjectURL(new Blob([b],{type:'audio/wav'}));}
+function bgAudio(on){try{if(on){if(!silent){silent=new Audio(silentURL());silent.loop=true;}silent.play().catch(()=>{});}else if(silent)silent.pause();}catch(e){}}
+
+/* ================= navigation ================= */
+let cur='today';
+function go(v){
+  if(cur==='play'&&v!=='play')stopPlay();
+  if(cur==='study'&&v!=='study'){stopSpeak();clearInterval(emptyT);$('#toast').classList.remove('on');}
+  if(v!=='mine'&&selMode){selMode=false;selIds.clear();$('#selBar').classList.remove('on');document.body.classList.remove('selon');}
+  cur=v;$$('.view').forEach(s=>s.classList.toggle('on',s.id==='v-'+v));
+  const tab=['study','play'].includes(v)?'today':v;$$('#nav button').forEach(b=>b.classList.toggle('on',b.dataset.v===tab));
+  if(v==='today')refreshToday();if(v==='study'){const r=STUDY_REQ;STUDY_REQ=null;fillDeckSel();buildSession(r&&r.practice,r&&r.ids);renderStudy();}
+  if(v==='play'){P.list=null;P.idx=0;fillDeckSel();renderPlay(false);}
+  if(v==='market')renderMarket();if(v==='mine')renderLib();if(v==='theory')drawCurve();
+  window.scrollTo(0,0);
+}
+$$('#nav button').forEach(b=>b.onclick=()=>go(b.dataset.v));
+$$('[data-back]').forEach(b=>b.onclick=()=>go('today'));
+$('#goStudy').onclick=()=>go('study');$('#goPlay').onclick=()=>go('play');
+$('#goPractice').onclick=()=>{if(!S.cards.length)return toast('還沒有卡片，先到「卡組」加入');STUDY_REQ={practice:true};go('study');};
+function setHelp(t){$$('#helpSeg button').forEach(b=>b.classList.toggle('on',b.dataset.h===t));$$('.hp').forEach(p=>p.classList.toggle('on',p.id==='hp-'+t));window.scrollTo(0,0);}
+$$('#helpSeg button').forEach(b=>b.onclick=()=>setHelp(b.dataset.h));
+const showHelp=t=>{go('theory');setHelp(t);};
+$('#toHelp').onclick=()=>showHelp('use');$('#toDesign').onclick=()=>showHelp('design');$('#toLegal').onclick=()=>showHelp('legal');
+function fillDeckSel(){const ds=decks();if(curDeck&&!ds.includes(curDeck))curDeck='';const h='<option value="">全部卡組</option>'+ds.map(d=>`<option ${d===curDeck?'selected':''} value="${esc(d)}">${esc(d)}（${queue(d).length}）</option>`).join('');$('#deckSel').innerHTML=h;$('#deckSel2').innerHTML=h;}
+$('#findBtn').onclick=()=>{go('mine');setTimeout(()=>$('#libQ').focus(),80);};
+$('#deckSel').onchange=e=>{curDeck=e.target.value;buildSession(SES.practice);renderStudy();};
+$('#deckSel2').onchange=e=>{curDeck=e.target.value;if(P.on)pause();P.list=null;P.idx=0;renderPlay(false);};
+
+/* ================= today ================= */
+const QUOTES=['溫故而知新，可以為師矣。','念念分明，處處作主。','學而時習之，不亦說乎。','鍥而不舍，金石可鏤。','少壯不努力，老大徒傷悲。','千里之行，始於足下。'];
+function refreshToday(){
+  const now=new Date(),q=queue('').length,done=S.log[today()]||0;
+  $('#hDay').textContent=cn(now.getDate());$('#hMd').textContent=cn(now.getMonth()+1)+'月　週'+WK[now.getDay()];
+  $('#hQuote').textContent=QUOTES[(now.getDate())%QUOTES.length];
+  $('#rDue').textContent=q;$('#ringArc').style.strokeDashoffset=326.7*(1-(done+q?done/(done+q):S.cards.length?1:0));
+  $('#tStreak').textContent=streak();$('#tDone').textContent=done;$('#tMaster').textContent=S.cards.filter(c=>c.stage>=MAXS).length;
+  $('#goStudy').textContent=q?`開始複習 · ${q}`:'開始複習';
+  {const nx=nextDue('');const hasSeq=S.cards.some(isSeq);$('#nextLine').textContent=q?`今天還有 ${q} 張待複習`:nx?`下一張 ${fmt(nx.due-Date.now())}後到期`+(hasSeq?'；經文背誦請在複習頁選卡組':''):hasSeq?'經文背誦：到複習頁選擇卡組開始背':S.cards.length?'今天的功課都完成了':'';}
+  const dot=$('#navDot');dot.style.display=q?'':'none';dot.textContent=q>99?'99+':q;
+  // forecast
+  const base=new Date();base.setHours(0,0,0,0);const counts=Array(7).fill(0);
+  S.cards.forEach(c=>{if(!c.reviews||isSeq(c))return;const k=Math.floor((c.due-base)/D);if(k<7)counts[Math.max(0,k)]++;});
+  counts[0]+=Math.min(newLeft(),S.cards.filter(c=>!c.reviews&&!isSeq(c)).length);
+  const mx=Math.max(1,...counts);
+  $('#forecast').innerHTML=counts.map((n,i)=>{const d=new Date(+base+i*D);return `<div class="col"><span class="n">${n||''}</span><div class="bar" style="height:${n/mx*70}%"></div><span class="d">${i===0?'今':'週'+WK[d.getDay()]}</span></div>`;}).join('');
+  const bins=Array(MAXS+1).fill(0);S.cards.forEach(c=>bins[Math.min(MAXS,c.stage)]++);const bm=Math.max(1,...bins);
+  $('#beadrow').innerHTML=bins.map((n,i)=>{const s=n?10+18*Math.sqrt(n/bm):6;return `<div class="bc"><div class="bd" style="width:${s}px;height:${s}px;${n?'':'opacity:.25'}"></div><small>${i===MAXS?'熟':i}<br>${n}</small></div>`;}).join('');
+}
+function refreshAll(){refreshToday();$('#deckList').innerHTML=decks().map(d=>`<option value="${esc(d)}">`).join('');}
+setInterval(()=>{if(cur==='today')refreshToday();},60000);
+
+/* ================= market data ================= */
+const CATS=[['all','全部'],['classic','經典卡'],['jh','國中單字卡'],['sh','高中單字卡'],['pro','專業知識考試'],['el','國小各科卡']];
+const CATCOL={classic:'#a3392b',jh:'#2f6b8f',sh:'#4a4a9a',pro:'#8a6a2a',el:'#3f8a5a'};
+const MARKET=[
+/* ======================= 經典卡 ======================= */
+{cat:'classic',name:'心經（全文背誦）',mode:'recite',hint:'cloze',dict:'般若=波惹\n揭諦=接地\n罣礙=掛礙\n藐=秒\n訶=喝',desc:'玄奘譯本全文，依經文順序背誦；上一句提示、這一句漸進挖空，讀音已校正。',
+ text:`觀自在菩薩，行深般若波羅蜜多時，照見五蘊皆空，度一切苦厄。舍利子，色不異空，空不異色，色即是空，空即是色，受想行識，亦復如是。舍利子，是諸法空相，不生不滅，不垢不淨，不增不減。是故空中無色，無受想行識，無眼耳鼻舌身意，無色聲香味觸法，無眼界，乃至無意識界。無無明，亦無無明盡，乃至無老死，亦無老死盡。無苦集滅道，無智亦無得。以無所得故，菩提薩埵，依般若波羅蜜多故，心無罣礙，無罣礙故，無有恐怖，遠離顛倒夢想，究竟涅槃。三世諸佛，依般若波羅蜜多故，得阿耨多羅三藐三菩提。故知般若波羅蜜多，是大神咒，是大明咒，是無上咒，是無等等咒，能除一切苦，真實不虛。故說般若波羅蜜多咒，即說咒曰：揭諦揭諦，波羅揭諦，波羅僧揭諦，菩提薩婆訶。`},
+{cat:'classic',name:'三皈依（全文背誦）',mode:'recite',hint:'cloze',desc:'出自《華嚴經・淨行品》，早晚課與皈依常誦。',
+ text:`自皈依佛，當願眾生，體解大道，發無上心。自皈依法，當願眾生，深入經藏，智慧如海。自皈依僧，當願眾生，統理大眾，一切無礙。`},
+{cat:'classic',name:'弟子規・總敘（全文背誦）',mode:'recite',hint:'first',desc:'弟子規開篇總敘，示範「首字提示」背誦方式。',dict:'孝弟=孝替',
+ text:`弟子規，聖人訓。首孝弟，次謹信。泛愛眾，而親仁。有餘力，則學文。`},
+{cat:'classic',name:'弟子規・入則孝、出則弟（全文背誦）',mode:'recite',hint:'cloze',rmode:'loop',desc:'弟子規「入則孝」「出則弟」兩章，依原文順序背誦；可改用「首字提示」練習。',
+ text:`父母呼，應勿緩，父母命，行勿懶。父母教，須敬聽，父母責，須順承。冬則溫，夏則清，晨則省，昏則定。出必告，反必面，居有常，業無變。事雖小，勿擅為，苟擅為，子道虧。物雖小，勿私藏，苟私藏，親心傷。親所好，力為具，親所惡，謹為去。身有傷，貽親憂，德有傷，貽親羞。親愛我，孝何難，親惡我，孝方貴。親有過，諫使更，怡吾色，柔吾聲。諫不入，悅復諫，號泣隨，撻無怨。兄道友，弟道恭，兄弟睦，孝在中。財物輕，怨何生，言語忍，忿自泯。或飲食，或坐走，長者先，幼者後。長呼人，即代叫，人不在，己即到。稱尊長，勿呼名，對尊長，勿見能。路遇長，疾趨揖，長無言，退恭立。騎下馬，乘下輿，過猶待，勿匆匆。長者立，幼勿坐，尊長前，聲要低。低不聞，卻非宜，進必趨，退必遲。問起對，視勿移，事雖小，勿輕為。`},
+{cat:'classic',name:'佛典偈頌選',desc:'金剛經、法句經、華嚴經、六祖壇經等常見偈頌，上句接下句。',cards:[
+ ['諸惡莫作，眾善奉行','自淨其意，是諸佛教。（七佛通誡偈）'],
+ ['一切有為法，如夢幻泡影','如露亦如電，應作如是觀。（金剛經）'],
+ ['凡所有相，皆是虛妄','若見諸相非相，則見如來。（金剛經）'],
+ ['若以色見我，以音聲求我','是人行邪道，不能見如來。（金剛經）'],
+ ['過去心不可得','現在心不可得，未來心不可得。（金剛經）'],
+ ['應無所住','而生其心。（金剛經）'],
+ ['心為法本，心尊心使，中心念惡，即言即行','罪苦自追，車轢于轍。（法句經・雙要品）'],
+ ['心為法本，心尊心使，中心念善，即言即行','福樂自追，如影隨形。（法句經・雙要品）'],
+ ['若人欲了知，三世一切佛','應觀法界性，一切唯心造。（華嚴經）'],
+ ['身是菩提樹，心如明鏡臺','時時勤拂拭，勿使惹塵埃。（神秀偈）'],
+ ['菩提本無樹，明鏡亦非臺','本來無一物，何處惹塵埃。（六祖惠能偈）'],
+ ['是日已過，命亦隨減，如少水魚，斯有何樂','當勤精進，如救頭燃，但念無常，慎勿放逸。（普賢警眾偈）'],
+ ['諸法因緣生，我說是因緣','因緣盡故滅，我作如是說。（緣起偈）'],
+ ['四弘誓願','眾生無邊誓願度，煩惱無盡誓願斷\n法門無量誓願學，佛道無上誓願成']]},
+{cat:'classic',name:'佛學名相入門',desc:'三寶、四聖諦、八正道、三十七道品等基礎名相。',cards:[
+ ['三寶','佛、法、僧'],['三皈依','皈依佛、皈依法、皈依僧'],['三學','戒、定、慧'],['三法印','諸行無常\n諸法無我\n涅槃寂靜'],
+ ['三毒','貪、瞋、癡'],['四聖諦','苦、集、滅、道'],['四大','地、水、火、風'],['四無量心','慈、悲、喜、捨'],
+ ['四攝法','布施、愛語、利行、同事'],['四念處','身念處、受念處、心念處、法念處（觀身不淨、觀受是苦、觀心無常、觀法無我）'],
+ ['四正勤','已生惡令斷、未生惡令不生\n未生善令生、已生善令增長'],['五蘊','色、受、想、行、識'],
+ ['五戒','不殺生、不偷盜、不邪淫、不妄語、不飲酒'],['五根／五力','信、精進、念、定、慧'],
+ ['六根','眼、耳、鼻、舌、身、意'],['六塵','色、聲、香、味、觸、法'],['六道','天、人、阿修羅、畜生、餓鬼、地獄'],
+ ['六波羅蜜','布施、持戒、忍辱\n精進、禪定、般若','','布施、持戒、忍辱，精進、禪定、波惹'],
+ ['七覺支','擇法、精進、喜、輕安、念、定、捨'],['八正道','正見、正思惟、正語、正業\n正命、正精進、正念、正定'],
+ ['三十七道品的組成','四念處、四正勤、四如意足、五根、五力、七覺支、八正道（4＋4＋4＋5＋5＋7＋8＝37）'],
+ ['十二因緣','無明、行、識、名色、六入、觸\n受、愛、取、有、生、老死'],
+ ['十善業','身三：不殺生、不偷盜、不邪淫\n口四：不妄語、不兩舌、不惡口、不綺語\n意三：不貪、不瞋、不癡'],
+ ['般若','智慧；照見諸法實相的智慧','波惹'],['南無','皈命、敬禮','拿摩'],['菩提','覺悟'],['涅槃','煩惱止息、寂滅的境界'],['緣起','諸法由因緣和合而生，因緣離散而滅']]},
+{cat:'classic',name:'法鼓山・心五四與理念',desc:'聖嚴法師提倡的心五四運動、心六倫與法鼓山理念。',cards:[
+ ['法鼓山的理念','提昇人的品質，建設人間淨土'],['法鼓山的三大教育','大學院教育、大普化教育、大關懷教育'],
+ ['心五四運動：四安','安心、安身、安家、安業'],['心五四運動：四要','需要、想要、能要、該要\n（需要的不多，想要的太多）'],
+ ['心五四運動：四它','面對它、接受它、處理它、放下它'],['心五四運動：四感','感恩、感謝、感化、感動'],
+ ['心五四運動：四福','知福、惜福、培福、種福'],['心六倫','家庭倫理、生活倫理、校園倫理、自然倫理、職場倫理、族群倫理'],
+ ['聖嚴法師所傳的禪法','中華禪法鼓宗（話頭禪與默照禪）']]},
+{cat:'classic',name:'論語名句',desc:'國中小常考的論語句子；「說」「省」「知」「好」等讀音已校正。',cards:[
+ ['學而時習之','不亦說乎？有朋自遠方來，不亦樂乎？人不知而不慍，不亦君子乎？','','不亦悅乎？有朋自遠方來，不亦樂乎？人不知而不慍，不亦君子乎？'],
+ ['吾日三省吾身','為人謀而不忠乎？與朋友交而不信乎？傳不習乎？','吾日三醒吾身','為人謀而不忠乎？與朋友交而不信乎？船不習乎？'],
+ ['溫故而知新','可以為師矣。'],['學而不思則罔','思而不學則殆。'],
+ ['知之為知之，不知為不知','是知也。','','是智也。'],['三人行','必有我師焉。擇其善者而從之，其不善者而改之。'],
+ ['己所不欲','勿施於人。'],['君子坦蕩蕩','小人長戚戚。'],['知者不惑，仁者不憂','勇者不懼。','智者不惑，仁者不憂'],
+ ['見賢思齊焉','見不賢而內自省也。','','見不賢而內自醒也。'],['德不孤','必有鄰。'],
+ ['敏而好學','不恥下問。','敏而浩學'],['工欲善其事','必先利其器。'],['歲寒','然後知松柏之後彫也。'],
+ ['朝聞道','夕死可矣。'],['過而不改','是謂過矣。'],['譬如為山，未成一簣','止，吾止也。'],['知之者不如好之者','好之者不如樂之者。','知之者不如浩之者','浩之者不如樂之者。']]},
+{cat:'classic',name:'唐詩名句',desc:'國小國語常見唐詩，上句接下句，附作者與詩題。',cards:[
+ ['床前明月光，疑是地上霜','舉頭望明月，低頭思故鄉。'],
+ ['春眠不覺曉，處處聞啼鳥','夜來風雨聲，花落知多少。'],
+ ['白日依山盡，黃河入海流','欲窮千里目，更上一層樓。'],
+ ['鋤禾日當午，汗滴禾下土','誰知盤中飧，粒粒皆辛苦。'],
+ ['慈母手中線，遊子身上衣','臨行密密縫，意恐遲遲歸。誰言寸草心，報得三春暉。'],
+ ['紅豆生南國，春來發幾枝','願君多采擷，此物最相思。'],
+ ['獨在異鄉為異客，每逢佳節倍思親','遙知兄弟登高處，遍插茱萸少一人。'],
+ ['少小離家老大回，鄉音無改鬢毛衰','兒童相見不相識，笑問客從何處來。','少小離家老大回，鄉音無改鬢毛催'],
+ ['朝辭白帝彩雲間，千里江陵一日還','兩岸猿聲啼不住，輕舟已過萬重山。'],
+ ['故人西辭黃鶴樓，煙花三月下揚州','孤帆遠影碧空盡，唯見長江天際流。'],
+ ['清明時節雨紛紛，路上行人欲斷魂','借問酒家何處有，牧童遙指杏花村。'],
+ ['遠上寒山石徑斜，白雲生處有人家','停車坐愛楓林晚，霜葉紅於二月花。','遠上寒山石徑霞，白雲生處有人家'],
+ ['國破山河在，城春草木深','感時花濺淚，恨別鳥驚心。'],
+ ['好雨知時節，當春乃發生','隨風潛入夜，潤物細無聲。']]},
+{cat:'classic',name:'三字經・弟子規',desc:'蒙學經典選句，上句接下句。',cards:[
+ ['人之初，性本善','性相近，習相遠。'],['苟不教，性乃遷','教之道，貴以專。'],['昔孟母，擇鄰處','子不學，斷機杼。'],
+ ['養不教，父之過','教不嚴，師之惰。'],['玉不琢，不成器','人不學，不知義。'],['香九齡，能溫席','孝於親，所當執。'],
+ ['融四歲，能讓梨','弟於長，宜先知。','','替於長，宜先知。'],
+ ['弟子規，聖人訓','首孝弟，次謹信。','','首孝替，次謹信。'],['泛愛眾，而親仁','有餘力，則學文。'],
+ ['父母呼，應勿緩','父母命，行勿懶。'],['用人物，須明求','倘不問，即為偷。'],['見人善，即思齊','縱去遠，以漸躋。']]},
+
+/* ======================= 國中單字卡 ======================= */
+{cat:'jh',name:'國中英文・基礎',desc:'會考基礎字 25 個，附詞性與例義。',cards:[
+ ['always','(adv.) 總是'],['answer','(n./v.) 答案；回答'],['borrow','(v.) 借入'],['careful','(adj.) 小心的'],['cheap','(adj.) 便宜的'],
+ ['clean','(adj./v.) 乾淨的；打掃'],['early','(adj./adv.) 早的；提早'],['easy','(adj.) 容易的'],['famous','(adj.) 有名的'],['favorite','(adj.) 最喜愛的'],
+ ['foreign','(adj.) 外國的'],['hungry','(adj.) 飢餓的'],['invite','(v.) 邀請'],['kind','(adj.) 仁慈的 (n.) 種類'],['quiet','(adj.) 安靜的'],
+ ['ready','(adj.) 準備好的'],['special','(adj.) 特別的'],['strange','(adj.) 奇怪的；陌生的'],['tired','(adj.) 疲倦的'],['visit','(v./n.) 拜訪；參觀'],
+ ['worry','(v.) 擔心'],['young','(adj.) 年輕的'],['remember','(v.) 記得'],['forget','(v.) 忘記'],['weather','(n.) 天氣']]},
+{cat:'jh',name:'國中英文・中級',desc:'會考中段單字 25 個。',cards:[
+ ['important','(adj.) 重要的'],['different','(adj.) 不同的'],['interesting','(adj.) 有趣的'],['decide','(v.) 決定'],['believe','(v.) 相信'],
+ ['several','(adj.) 幾個的'],['library','(n.) 圖書館'],['hospital','(n.) 醫院'],['neighbor','(n.) 鄰居'],['dangerous','(adj.) 危險的'],
+ ['enough','(adj./adv.) 足夠的'],['review','(v./n.) 複習；回顧'],['practice','(v./n.) 練習'],['advice','(n.) 建議（不可數）'],['accept','(v.) 接受'],
+ ['attention','(n.) 注意'],['exercise','(n./v.) 運動；練習'],['healthy','(adj.) 健康的'],['habit','(n.) 習慣'],['husband','(n.) 丈夫'],
+ ['message','(n.) 訊息'],['museum','(n.) 博物館'],['probably','(adv.) 可能'],['surprise','(n./v.) 驚喜；使驚訝'],['traffic','(n.) 交通']]},
+{cat:'jh',name:'國中英文・進階',desc:'會考後段難字 25 個。',cards:[
+ ['knowledge','(n.) 知識'],['environment','(n.) 環境'],['experience','(n./v.) 經驗；經歷'],['opportunity','(n.) 機會'],['patient','(adj.) 有耐心的 (n.) 病人'],
+ ['successful','(adj.) 成功的'],['communicate','(v.) 溝通'],['culture','(n.) 文化'],['protect','(v.) 保護'],['realize','(v.) 了解；實現'],
+ ['suggest','(v.) 建議'],['allow','(v.) 允許'],['achieve','(v.) 達成'],['available','(adj.) 可得到的；有空的'],['celebrate','(v.) 慶祝'],
+ ['competition','(n.) 比賽；競爭'],['confident','(adj.) 有自信的'],['convenient','(adj.) 方便的'],['describe','(v.) 描述'],['encourage','(v.) 鼓勵'],
+ ['especially','(adv.) 特別；尤其'],['imagine','(v.) 想像'],['pollution','(n.) 汙染'],['responsible','(adj.) 負責任的'],['recycle','(v.) 回收再利用']]},
+
+/* ======================= 高中單字卡 ======================= */
+{cat:'sh',name:'高中英文・Level 3',desc:'學測基礎字 20 個。',cards:[
+ ['admire','(v.) 欽佩'],['advantage','(n.) 優點；優勢'],['affect','(v.) 影響'],['anxious','(adj.) 焦慮的；渴望的'],['apologize','(v.) 道歉'],
+ ['arrange','(v.) 安排'],['attitude','(n.) 態度'],['attract','(v.) 吸引'],['audience','(n.) 觀眾；聽眾'],['avoid','(v.) 避免'],
+ ['behavior','(n.) 行為'],['benefit','(n./v.) 益處；使受益'],['budget','(n.) 預算'],['career','(n.) 職業生涯'],['challenge','(n./v.) 挑戰'],
+ ['confuse','(v.) 使困惑'],['consider','(v.) 考慮；認為'],['damage','(n./v.) 損害'],['deserve','(v.) 應得'],['emotion','(n.) 情緒']]},
+{cat:'sh',name:'高中英文・Level 4',desc:'學測常見中級字 20 個。',cards:[
+ ['abundant','(adj.) 豐富的；充足的'],['accurate','(adj.) 準確的'],['adequate','(adj.) 足夠的；適當的'],['anticipate','(v.) 預期'],['appreciate','(v.) 欣賞；感激'],
+ ['assume','(v.) 假定；承擔'],['capable','(adj.) 有能力的'],['consequence','(n.) 後果'],['contribute','(v.) 貢獻；促成'],['crucial','(adj.) 關鍵的'],
+ ['efficient','(adj.) 有效率的'],['emphasize','(v.) 強調'],['evaluate','(v.) 評估'],['flexible','(adj.) 有彈性的'],['generate','(v.) 產生'],
+ ['inevitable','(adj.) 不可避免的'],['interpret','(v.) 解釋；口譯'],['maintain','(v.) 維持'],['obvious','(adj.) 明顯的'],['participate','(v.) 參與']]},
+{cat:'sh',name:'高中英文・Level 5–6',desc:'學測、分科測驗高階字 20 個。',cards:[
+ ['ambiguous','(adj.) 模稜兩可的'],['arbitrary','(adj.) 武斷的；任意的'],['coherent','(adj.) 有條理的；連貫的'],['compassion','(n.) 慈悲；同情'],['comprehensive','(adj.) 全面的'],
+ ['contemplate','(v.) 沉思；考慮'],['diligent','(adj.) 勤勉的'],['eloquent','(adj.) 有說服力的；雄辯的'],['empirical','(adj.) 實證的'],['endeavor','(n./v.) 努力'],
+ ['meditation','(n.) 冥想；禪修'],['perseverance','(n.) 毅力'],['profound','(adj.) 深刻的；深奧的'],['resilient','(adj.) 有韌性的'],['tranquil','(adj.) 寧靜的'],
+ ['versatile','(adj.) 多才多藝的；多用途的'],['inherent','(adj.) 固有的；內在的'],['meticulous','(adj.) 一絲不苟的'],['pragmatic','(adj.) 務實的'],['scrutinize','(v.) 仔細檢查']]},
+
+/* ======================= 專業知識考試 ======================= */
+{cat:'pro',name:'教檢｜教育心理學',desc:'皮亞傑、維高斯基、艾瑞克森、行為學派、認知學派重點 20 張。',cards:[
+ ['皮亞傑認知發展四階段','感覺動作期（0–2 歲）\n前運思期（2–7 歲）\n具體運思期（7–11 歲）\n形式運思期（11 歲以上）'],
+ ['前運思期的主要特徵','自我中心、尚未具備保留概念、直覺思考、萬物有靈'],
+ ['皮亞傑的「同化」與「調適」','同化：以既有基模解釋新經驗\n調適：改變基模以符合新經驗'],
+ ['維高斯基「近側發展區」（ZPD）','兒童獨立表現水準，與在成人或能力較佳同儕協助下可達水準之間的差距'],
+ ['鷹架作用（scaffolding）','教師依學習者需要提供暫時性支持，隨能力提升逐步撤除'],
+ ['艾瑞克森心理社會發展八階段','信任 vs. 不信任\n自主 vs. 羞愧懷疑\n主動 vs. 罪惡感\n勤奮 vs. 自卑\n認同 vs. 角色混淆\n親密 vs. 孤立\n生產 vs. 停滯\n統整 vs. 絕望'],
+ ['柯爾伯格道德發展三期','道德成規前期、道德循規期、道德自律期（後成規期），各兩階段，共六階段'],
+ ['巴夫洛夫古典制約','中性刺激與非制約刺激反覆配對後，中性刺激也能引發反應'],
+ ['斯金納操作制約的「負增強」','移除嫌惡刺激，使行為增加（不同於懲罰）'],
+ ['桑代克三大學習律','準備律、練習律、效果律'],
+ ['馬斯洛需求層次（五層）','生理、安全、愛與隸屬、尊重、自我實現'],
+ ['奧蘇貝爾的「前導組織」','教學前先呈現較抽象、概括的引導材料，幫助新知與舊經驗連結，形成有意義學習'],
+ ['布魯納表徵系統三階段','動作表徵、圖像表徵、符號表徵（主張發現學習、螺旋式課程）'],
+ ['韋納歸因理論的三向度','原因來源（內在／外在）、穩定性、可控制性'],
+ ['班度拉的「自我效能」','個人對自己能否成功完成某項任務的信念'],
+ ['班度拉觀察學習四歷程','注意、保留、再生（動作重現）、動機'],
+ ['布魯姆認知目標（修訂版）六層次','記憶、了解、應用、分析、評鑑、創造'],
+ ['迦納多元智能（8 種）','語文、邏輯數學、空間、肢體動覺、音樂、人際、內省、自然觀察'],
+ ['比馬龍效應','教師期望影響學生表現的自我應驗預言（羅森塔爾與雅各布森研究）'],
+ ['後設認知','對自己認知歷程的覺察、監控與調整']]},
+{cat:'pro',name:'教檢｜教育哲學與教育社會學',desc:'杜威、盧梭、皮德思、布迪厄等人物與學說 15 張。',cards:[
+ ['杜威的教育主張','教育即生活、學校即社會、教育即經驗的不斷重組與改造（實用主義）'],
+ ['盧梭的教育主張','自然主義教育，反對過早灌輸，順應兒童天性'],['赫爾巴特四段教學法','明瞭、聯合、系統、方法（其後學者擴充為五段教學法）'],
+ ['康德的名言','人只有透過教育才能成為人'],
+ ['皮德思的教育三規準','合價值性、合認知性、合自願性'],['布柏的教育關係觀','「我—汝」關係：師生是彼此真誠相遇的主體'],
+ ['弗雷勒批判的「囤積式教育」','教師把知識存入學生，學生被動接受；主張提問式、對話式教育（《受壓迫者教育學》）'],
+ ['布迪厄的核心概念','文化資本、慣習、場域；學校可能再製社會階級'],['涂爾幹對教育的看法','教育是使年輕一代社會化的歷程'],
+ ['1966 年柯爾曼報告的主要發現','家庭社經背景對學業成就的影響大於學校資源'],['潛在課程','學校中未明列於課程，卻影響學生價值與態度的學習經驗'],
+ ['懸缺課程','學校應教卻未教、被排除在外的課程內容（艾斯納提出）'],['精粹主義的主張','回歸基本學科，重視文化精華的傳遞與學術標準']]},
+{cat:'pro',name:'教檢｜108 課綱',desc:'核心素養三面九項、課程架構、素養導向教學 15 張。',cards:[
+ ['108 課綱的核心理念','自發、互動、共好'],['總綱發布與實施時間','2014 年 11 月發布；108 學年度（2019 年 8 月）起逐年實施'],
+ ['核心素養三大面向','A 自主行動、B 溝通互動、C 社會參與'],
+ ['A 自主行動的三項目','A1 身心素質與自我精進\nA2 系統思考與解決問題\nA3 規劃執行與創新應變'],
+ ['B 溝通互動的三項目','B1 符號運用與溝通表達\nB2 科技資訊與媒體素養\nB3 藝術涵養與美感素養'],
+ ['C 社會參與的三項目','C1 道德實踐與公民意識\nC2 人際關係與團隊合作\nC3 多元文化與國際理解'],
+ ['課程類型兩大類','部定課程、校訂課程'],['國中小的校訂課程名稱','彈性學習課程'],
+ ['彈性學習課程四類','統整性主題／專題／議題探究課程、社團活動與技藝課程、特殊需求領域課程、其他類課程'],
+ ['國中部定課程的八大領域','語文、數學、社會、自然科學、科技、藝術、綜合活動、健康與體育（國小不設科技領域，低年級另有生活課程）'],
+ ['每節上課時間','國小 40 分鐘、國中 45 分鐘、高中 50 分鐘'],['學習重點的兩個向度','學習表現、學習內容'],
+ ['總綱列出的四項重大議題','性別平等、人權、環境、海洋'],['素養導向教學四原則','整合知識技能態度、情境脈絡化、重視學習方法與策略、實踐力行'],
+ ['核心素養的定義','一個人為適應現在生活及面對未來挑戰，所應具備的知識、能力與態度']]},
+{cat:'pro',name:'教甄｜特殊教育',desc:'特教法類別、IEP、融合教育 12 張。',cards:[
+ ['特殊教育法的身心障礙類別（13 類）','智能障礙、視覺障礙、聽覺障礙、語言障礙、肢體障礙、腦性麻痺、身體病弱、情緒行為障礙、學習障礙、多重障礙、自閉症、發展遲緩、其他障礙'],
+ ['特殊教育法的資賦優異類別（6 類）','一般智能、學術性向、藝術才能、創造能力、領導能力、其他特殊才能'],
+ ['IEP','個別化教育計畫：為身心障礙學生擬定的教育計畫'],['IGP','個別輔導計畫：為資賦優異學生擬定的輔導計畫'],
+ ['最少限制環境（LRE）','在合適的前提下，讓特殊需求學生盡可能與一般學生一起學習'],['融合教育','特殊需求學生在普通班接受教育，並獲得所需支持'],
+ ['鑑輔會','特殊教育學生鑑定及就學輔導會，負責鑑定、安置與輔導'],['學習障礙的「排他因素」','學習困難並非由感官、智能、情緒或文化刺激不足等因素直接造成'],
+ ['通用設計學習（UDL）三原則','提供多元的表徵、多元的行動與表達、多元的參與方式'],['工作分析法','將複雜技能拆解成小步驟，逐步教學'],
+ ['區分性教學','依學生準備度、興趣與學習風格調整內容、過程與成果'],['正向行為支持（PBS）','以功能性行為評量了解行為功能，調整環境並教導替代行為']]},
+{cat:'pro',name:'公職｜中華民國憲法',desc:'五院、任期、修憲、基本權 18 張。',cards:[
+ ['五院','行政院、立法院、司法院、考試院、監察院'],['總統任期','4 年，連選得連任一次'],
+ ['總統、副總統的選舉方式','由自由地區全體人民直接選舉（1996 年首次直選）'],['行政院長的產生','由總統任命，不需立法院同意'],
+ ['立法委員席次與任期','113 席，任期 4 年'],['立法委員選舉制度','單一選區兩票制'],
+ ['司法院大法官人數與任期','15 人，任期 8 年，不分屆次，個別計算，不得連任'],['監察委員人數與任期','29 人，任期 6 年'],
+ ['監察院的職權','彈劾、糾舉、糾正、審計'],['審計長任期','6 年'],['考試委員任期','4 年'],
+ ['人民的三項基本義務（憲法明文）','納稅、服兵役、受國民教育'],['參政權的四權','選舉、罷免、創制、複決'],
+ ['不信任案的提出門檻','立法委員 1/3 以上連署'],['覆議案的期限與門檻','立法院於送達 15 日內作成決議；全體立委 1/2 以上決議維持原案，行政院長應即接受'],
+ ['修憲程序（增修條文第 12 條）','立委 1/4 提議、3/4 出席、出席委員 3/4 決議提出，公告半年後經公民投票，有效同意票過選舉人總額半數即通過'],
+ ['領土變更程序','與修憲相同門檻提出，公告半年後經公民投票複決'],['憲法法庭審理依據的法律','憲法訴訟法（2022 年 1 月 4 日施行）']]},
+{cat:'pro',name:'公職｜行政法',desc:'一般法律原則、行政處分、救濟、時效 16 張。',cards:[
+ ['比例原則的三個子原則','適當性（合目的性）、必要性（最小侵害）、衡量性（狹義比例）'],
+ ['法律保留原則','涉及人民權利義務的重要事項，須有法律或法律明確授權的命令為依據'],['法律優位原則','行政行為不得牴觸法律'],
+ ['信賴保護原則的要件','信賴基礎、信賴表現、信賴值得保護'],['禁止不當聯結原則','行政行為不得與無實質關聯的事項相結合'],
+ ['行政處分的定義（行政程序法第 92 條）','行政機關就公法上具體事件所為之決定或其他公權力措施而對外直接發生法律效果之單方行政行為'],
+ ['行政處分的附款（第 93 條）','期限、條件、負擔、保留行政處分之廢止權、保留負擔之事後附加或變更'],
+ ['提起訴願的期間','行政處分達到或公告期滿之次日起 30 日內'],['撤銷訴訟的起訴期間','訴願決定書送達後 2 個月內'],
+ ['行政罰的裁處權時效','3 年'],['公法上請求權時效（行政程序法第 131 條）','行政機關為請求權人：5 年；人民為請求權人：10 年'],
+ ['公法上金錢給付義務的執行期間','自其執行期間起算日起 5 年內未經執行者，不再執行'],
+ ['國家賠償請求權時效','自知有損害時起 2 年；自損害發生時起逾 5 年亦同'],['國家賠償的請求程序','應先以書面向賠償義務機關請求，協議不成再起訴'],
+ ['行政契約的締結方式','應以書面為之'],['行政指導的性質','不具法律上強制力的事實行為']]},
+{cat:'pro',name:'民法總則',desc:'權利能力、行為能力、時效、意思表示 15 張。',cards:[
+ ['權利能力的始終（第 6 條）','始於出生，終於死亡'],['胎兒的權利能力（第 7 條）','以將來非死產者為限，關於其個人利益之保護，視為既已出生'],
+ ['死亡宣告的失蹤期間（第 8 條）','一般 7 年；80 歲以上 3 年；遭遇特別災難 1 年'],['成年年齡','18 歲（2023 年 1 月 1 日起施行）'],
+ ['無行為能力人','未滿 7 歲之未成年人、受監護宣告之人'],['限制行為能力人','滿 7 歲以上之未成年人'],
+ ['不動產的定義（第 66 條）','土地及其定著物'],['違反強制或禁止規定的法律行為（第 71 條）','原則上無效'],
+ ['違背公共秩序或善良風俗的法律行為（第 72 條）','無效'],['一般消滅時效（第 125 條）','15 年'],
+ ['利息、紅利、租金等定期給付的時效（第 126 條）','5 年'],['第 127 條短期時效','2 年（如旅店、飲食費、商品代價等）'],
+ ['意思表示錯誤之撤銷除斥期間（第 90 條）','自意思表示後經過 1 年而消滅'],['被詐欺或脅迫之撤銷期間（第 93 條）','發見詐欺或脅迫終止後 1 年內；自意思表示後經過 10 年不得撤銷'],
+ ['法人的兩種類型','社團法人、財團法人']]},
+{cat:'pro',name:'會計學基礎',desc:'恆等式、借貸、報表、比率分析 16 張。',cards:[
+ ['會計恆等式','資產 ＝ 負債 ＋ 權益'],['借貸法則：資產與費用增加記在','借方'],['借貸法則：負債、權益與收入增加記在','貸方'],
+ ['會計四大基本假設','企業個體、繼續經營、貨幣評價、會計期間'],
+ ['四大財務報表','資產負債表（財務狀況表）、綜合損益表、權益變動表、現金流量表'],
+ ['權責發生制（應計基礎）','收入於賺得時認列，費用於發生時認列，不以現金收付為準'],
+ ['會計循環的主要步驟','分析交易 → 分錄 → 過帳 → 試算 → 調整 → 編表 → 結帳'],
+ ['直線法折舊公式','（成本 − 殘值）÷ 耐用年限'],['雙倍餘額遞減法折舊率','2 ÷ 耐用年限（乘以期初帳面金額）'],
+ ['毛利','銷貨收入淨額 − 銷貨成本'],['流動比率','流動資產 ÷ 流動負債'],['速動比率','速動資產 ÷ 流動負債（速動資產＝流動資產扣除存貨、預付費用等）'],
+ ['權益報酬率（ROE）','本期淨利 ÷ 平均權益'],['存貨週轉率','銷貨成本 ÷ 平均存貨'],
+ ['IFRS 不允許的存貨成本公式','後進先出法（LIFO）'],['現金流量表的三大活動','營業活動、投資活動、籌資活動']]},
+{cat:'pro',name:'資訊｜網路與資安',desc:'OSI、協定、埠號、常見攻擊與防護 18 張。',cards:[
+ ['OSI 七層（由下而上）','實體層、資料鏈結層、網路層、傳輸層、會議層、表現層、應用層'],
+ ['TCP 與 UDP 的主要差異','TCP 連線導向、可靠、有序；UDP 無連線、不保證送達、延遲低'],
+ ['HTTP／HTTPS 預設埠號','80／443'],['DNS 預設埠號','53'],['SSH 預設埠號','22'],['SMTP 預設埠號','25'],
+ ['IPv4 與 IPv6 的位址長度','IPv4：32 位元；IPv6：128 位元'],['/24 子網路的子網路遮罩','255.255.255.0'],
+ ['HTTP 狀態碼 200／404／500','成功／找不到資源／伺服器內部錯誤'],['資訊安全三要素 CIA','機密性、完整性、可用性'],
+ ['對稱式與非對稱式加密代表演算法','對稱：AES；非對稱：RSA、ECC'],['雜湊函數的特性','單向不可逆、固定長度輸出、抗碰撞（例：SHA-256）'],
+ ['多因素驗證（MFA）的三類因素','所知（密碼）、所有（手機、金鑰）、所是（生物特徵）'],['SQL 注入','在輸入欄位插入惡意 SQL 指令以操作資料庫；以參數化查詢防範'],
+ ['跨站腳本攻擊（XSS）','在網頁注入惡意腳本，於其他使用者瀏覽器執行；以輸出編碼防範'],['DDoS','分散式阻斷服務攻擊：大量來源同時發送請求使服務癱瘓'],
+ ['最小權限原則','使用者與程式只給完成工作所需的最少權限'],['3-2-1 備份原則','3 份資料、2 種儲存媒介、1 份異地保存']]},
+{cat:'pro',name:'醫護｜醫學術語字根',desc:'常見字首、字根、字尾 25 張。',cards:[
+ ['-itis','發炎（如 hepatitis 肝炎）'],['-ectomy','切除術（如 appendectomy 闌尾切除術）'],['-otomy','切開術（如 tracheotomy 氣管切開術）'],
+ ['-ostomy','造口術（如 colostomy 結腸造口術）'],['-plasty','成形術（如 rhinoplasty 鼻整形術）'],['-scopy','內視鏡檢查（如 gastroscopy 胃鏡檢查）'],
+ ['-algia','疼痛（如 neuralgia 神經痛）'],['-emia','血液狀態（如 anemia 貧血）'],['-megaly','腫大（如 hepatomegaly 肝腫大）'],
+ ['-penia','缺乏、減少（如 leukopenia 白血球減少）'],['-rrhea','流出（如 diarrhea 腹瀉）'],['-ology','……學（如 cardiology 心臟學）'],
+ ['hyper- / hypo-','過高、過多／過低、不足'],['brady- / tachy-','緩慢／快速（如 bradycardia 心搏過緩）'],['dys-','困難、異常（如 dyspnea 呼吸困難）'],
+ ['a- / an-','無、缺乏（如 apnea 呼吸暫停）'],['peri- / endo-','周圍／內部'],['cardi(o)-','心臟'],['hepat(o)-','肝臟'],
+ ['nephr(o)- / ren-','腎臟'],['gastr(o)-','胃'],['oste(o)-','骨'],['derm(at)-','皮膚'],['neur(o)-','神經'],['pneum(o)- / pulmon(o)-','肺']]},
+
+/* ======================= 國小各科卡 ======================= */
+{cat:'el',name:'國小國語・易錯讀音',desc:'示範「自編讀音」：用同音字修正語音念錯的字。',cards:[
+ ['參差','ㄘㄣ ㄘ　長短高低不齊','岑疵'],['剎那','ㄔㄚˋ ㄋㄚˋ　極短的時間','岔那'],['一曝十寒','ㄆㄨˋ　比喻做事沒有恆心','一鋪十寒'],
+ ['熟稔','ㄕㄡˊ ㄖㄣˇ　非常熟悉','熟忍'],['便宜行事','ㄅㄧㄢˋ ㄧˊ　依情況自行處理','變宜行事'],['良莠不齊','ㄧㄡˇ　好壞混雜','良有不齊'],
+ ['否極泰來','ㄆㄧˇ　壞運到了盡頭，好運就會來','匹極泰來'],['心廣體胖','ㄆㄢˊ　心胸開闊，身體安舒','心廣體盤'],['莘莘學子','ㄕㄣ ㄕㄣ　眾多的學生','深深學子'],
+ ['為虎作倀','ㄔㄤ　比喻幫助惡人做壞事','為虎作昌'],['自怨自艾','ㄧˋ　悔恨自己的過錯','自怨自意'],['呱呱墜地','ㄍㄨ ㄍㄨ　嬰兒出生','姑姑墜地']]},
+{cat:'el',name:'國小國語・成語',desc:'中高年級常用成語 18 個。',cards:[
+ ['溫故知新','溫習舊知識，從中得到新體會'],['鍥而不捨','持續不斷地努力','切而不捨'],['循序漸進','按照步驟逐步深入'],
+ ['熟能生巧','熟練了自然能找到竅門'],['水滴石穿','力量雖小，持之以恆必能成功'],['半途而廢','事情做到一半就停止'],
+ ['一鼓作氣','趁著勇氣旺盛時一口氣完成'],['亡羊補牢','出了問題後及時補救，還不算晚'],['守株待兔','死守經驗不知變通，或妄想不勞而獲'],
+ ['畫蛇添足','多此一舉，反而弄巧成拙'],['井底之蛙','比喻見識淺薄的人'],['杯弓蛇影','比喻疑神疑鬼，自相驚擾'],
+ ['狐假虎威','倚仗別人的權勢欺壓他人'],['對牛彈琴','比喻對不懂道理的人講道理'],['揠苗助長','違反自然規律，急於求成反而壞事'],
+ ['塞翁失馬','比喻暫時的損失可能帶來好處'],['愚公移山','比喻有恆心、不怕困難'],['破釜沉舟','下定決心，不留退路']]},
+{cat:'el',name:'國小數學・公式與單位',desc:'面積、周長、體積、單位換算 18 張。',cards:[
+ ['正方形周長','邊長 × 4'],['長方形周長','（長 ＋ 寬）× 2'],['長方形面積','長 × 寬'],['三角形面積','底 × 高 ÷ 2'],
+ ['平行四邊形面積','底 × 高'],['梯形面積','（上底 ＋ 下底）× 高 ÷ 2'],['菱形面積','對角線 × 對角線 ÷ 2'],
+ ['圓周長','直徑 × 圓周率（3.14）'],['圓面積','半徑 × 半徑 × 圓周率（3.14）'],['長方體體積','長 × 寬 × 高'],
+ ['三角形內角和','180 度'],['四邊形內角和','360 度'],['平均數','總和 ÷ 個數'],['速率','距離 ÷ 時間'],
+ ['1 公升 ＝ ？ 立方公分','1000 立方公分'],['1 公頃 ＝ ？ 平方公尺','10000 平方公尺'],['1 平方公尺 ＝ ？ 平方公分','10000 平方公分'],
+ ['質數','大於 1，且只有 1 和自己兩個因數的整數（如 2、3、5、7）']]},
+{cat:'el',name:'國小自然',desc:'生物、物質、能量、天文 18 張。',cards:[
+ ['光合作用的原料與產物','原料：二氧化碳、水（需要光）\n產物：養分（葡萄糖）、氧氣'],['昆蟲身體分成哪三部分','頭、胸、腹（胸部有 3 對腳）'],
+ ['植物的六大器官','根、莖、葉、花、果實、種子'],['哺乳類的主要特徵','大多胎生，以乳汁哺育幼體，體表有毛'],
+ ['水的三態','固態（冰）、液態（水）、氣態（水蒸氣）'],['水在一大氣壓下的沸點','100°C'],['蒸發與凝結','蒸發：液態變氣態；凝結：氣態變液態'],
+ ['燃燒的三要素','可燃物、助燃物（氧氣）、溫度達到燃點'],['石蕊試紙遇酸、遇鹼','酸性：藍色變紅色；鹼性：紅色變藍色'],
+ ['磁鐵的特性','同極相斥、異極相吸'],['串聯與並聯電路','串聯：一個燈泡壞，其他都不亮\n並聯：一個燈泡壞，其他仍會亮'],
+ ['槓桿的三個點','支點、施力點、抗力點'],['太陽系八大行星（由內而外）','水星、金星、地球、火星、木星、土星、天王星、海王星'],
+ ['地球自轉與公轉','自轉一圈約一天，造成晝夜；公轉一圈約一年'],['月相變化週期','約 29.5 天'],['太陽從哪個方向升起','東方'],
+ ['聲音傳播需要什麼','介質（固體、液體、氣體）；真空中無法傳播'],['光的三原色','紅、綠、藍']]},
+{cat:'el',name:'國小社會・臺灣',desc:'臺灣地理、行政區、族群 16 張。',cards:[
+ ['臺灣最高峰與高度','玉山，約 3,952 公尺'],['臺灣最長的河川','濁水溪'],['臺灣的五大山脈','中央山脈、雪山山脈、玉山山脈、阿里山山脈、海岸山脈'],
+ ['六個直轄市','臺北市、新北市、桃園市、臺中市、臺南市、高雄市'],['臺灣面積最大的縣','花蓮縣'],['臺灣最大的淡水湖泊','日月潭'],
+ ['臺灣東邊臨接的海洋','太平洋'],['臺灣與中國大陸之間的海峽','臺灣海峽'],['臺灣本島最北端','富貴角（新北市石門區）'],
+ ['北回歸線經過的縣','嘉義縣、花蓮縣（本島）'],['臺灣的主要離島（舉例）','澎湖、金門、馬祖、綠島、蘭嶼、小琉球'],['政府認定的原住民族族數','16 族'],
+ ['臺灣的氣候類型','北部屬副熱帶季風氣候，南部屬熱帶季風氣候'],['夏季颱風主要帶來什麼','強風與豪雨，也是重要的水資源來源'],
+ ['地方自治團體有哪些層級','直轄市、縣（市）；鄉（鎮、市）'],['臺灣的四大族群（傳統說法）','原住民族、閩南、客家、外省；近年新住民常被稱為第五大族群']]},
+{cat:'el',name:'國小英語・生活字',desc:'顏色、數字、家人、星期、學校 24 個。',cards:[
+ ['red','紅色'],['yellow','黃色'],['purple','紫色'],['orange','橘色；柳橙'],['twelve','十二'],['twenty','二十'],['hundred','一百'],
+ ['grandmother','祖母；外婆'],['brother','兄弟'],['sister','姊妹'],['teacher','老師'],['student','學生'],['classroom','教室'],
+ ['breakfast','早餐'],['lunch','午餐'],['dinner','晚餐'],['Monday','星期一'],['Wednesday','星期三'],['Saturday','星期六'],
+ ['happy','快樂的'],['sad','難過的'],['eraser','橡皮擦'],['ruler','尺'],['pencil','鉛筆']]}
+];
+MARKET.forEach((m,i)=>{m.id='m'+i;if(m.text)m.cards=splitText(m.text,'auto',1).map(t=>[t]);});
+
+/* ================= market UI ================= */
+let mCat='all';
+$('#mCats').innerHTML=CATS.map(([k,n])=>`<button class="chip ${k==='all'?'on':''}" data-c="${k}">${n}</button>`).join('');
+$$('#mCats .chip').forEach(b=>b.onclick=()=>{mCat=b.dataset.c;$$('#mCats .chip').forEach(x=>x.classList.toggle('on',x===b));renderMarket();});
+$('#mQ').oninput=renderMarket;
+function renderMarket(){
+  const q=$('#mQ').value.trim().toLowerCase();const have=new Set(decks());
+  const L=MARKET.filter(m=>(mCat==='all'||m.cat===mCat)&&(!q||(m.name+m.desc+m.cards.flat().join(' ')).toLowerCase().includes(q)));
+  $('#mDecks').innerHTML=L.length?L.map(m=>`<button class="deck" data-m="${m.id}" style="--dc:${CATCOL[m.cat]}"><span class="cat">${CATS.find(c=>c[0]===m.cat)[1]}${m.mode==='recite'?' · 經文背誦':''}</span><h4>${esc(m.name)}</h4><p>${esc(m.desc)}</p><div class="ft"><span>${m.cards.length} ${m.mode==='recite'?'句':'張'}</span>${have.has(m.name)?'<span class="added">✓ 已加入</span>':'<span>預覽 ›</span>'}</div></button>`).join(''):'<p class="muted" style="grid-column:1/-1">找不到相符的卡組，可以在下方匯入自己的內容。</p>';
+  $$('#mDecks .deck').forEach(b=>b.onclick=()=>preview(MARKET.find(m=>m.id===b.dataset.m)));
+}
+function preview(m,g0){
+  const added=decks().includes(m.name),rec=m.mode==='recite';
+  if(rec&&m.text){const g=g0||m._g||1;m._g=g;m.cards=splitText(m.text,'auto',g).map(t=>[t]);}
+  modal(`<span style="font-size:11px;letter-spacing:.2em;color:${CATCOL[m.cat]};font-weight:700">${CATS.find(c=>c[0]===m.cat)[1]}${rec?' · 經文背誦':''}</span><h3>${esc(m.name)}</h3><p class="muted tiny" style="margin:0 0 12px">${esc(m.desc)}</p>
+   ${rec&&m.text?`<span class="f">每張卡的字數</span><div class="seg gsz" id="gsz">${[1,2,3,4].map(n=>`<button data-g="${n}" class="${(m._g||1)===n?'on':''}">${n===1?'一句':n+' 句'}</button>`).join('')}</div>`:''}
+   ${rec?`<div class="note" style="margin:0 0 10px">經文背誦模式：依經文順序出題，畫面顯示上一句，這一句以「${HINTS[m.hint||'cloze']}」提示，背得越熟挖空越多。加入後可在「我的 → 卡組設定」更改。</div>`:''}
+   ${rec?'':`<input type="search" id="mvQ" placeholder="在這組裡搜尋…"><div class="row" style="margin:8px 0"><button class="btn sm" id="mvAll">全選</button><button class="btn sm" id="mvNone">全不選</button><span class="tiny muted" id="mvCnt"></span></div>`}
+   <div class="panel" style="padding:4px 14px;max-height:42vh;overflow:auto" id="mvList">${m.cards.map((c,i)=>`<label class="item pvi" data-i="${i}">${rec?'':`<input type="checkbox" checked><span class="ckb"></span>`}<div class="t">${rec?`<span class="tiny muted">${i+1}　</span>${esc(c[0])}`:`<b>${esc(c[0])}</b>${c[2]?` <span class="tiny muted">［讀：${esc(c[2])}］</span>`:''}<div class="b" style="white-space:normal">${esc(c[1]).replace(/\n/g,'；')}</div>`}</div></label>`).join('')}</div>
+   <div class="row" style="justify-content:flex-end;margin-top:6px"><button class="btn" id="pvX">關閉</button><button class="btn pri" id="pvAdd">${added?'再加入一次':'加入 '+m.cards.length+(rec?' 句':' 張')}</button></div>`,md=>{
+    md.querySelector('#pvX').onclick=close;
+    md.querySelectorAll('#gsz button').forEach(b=>b.onclick=()=>{close();preview(m,+b.dataset.g);});
+    const rows=[...md.querySelectorAll('#mvList .pvi')],cnt=()=>{const n=rows.filter(r=>r.querySelector('input')?.checked).length;const e=md.querySelector('#mvCnt');if(e)e.textContent=`已勾選 ${n} / ${rows.length}`;const b=md.querySelector('#pvAdd');if(!rec)b.textContent=added?`再加入勾選的 ${n} 張`:`加入 ${n} 張`;};
+    if(!rec){md.querySelector('#mvQ').oninput=e=>{const q=e.target.value.trim().toLowerCase();rows.forEach(r=>{r.style.display=!q||r.textContent.toLowerCase().includes(q)?'':'none';});};
+      md.querySelector('#mvAll').onclick=()=>{rows.forEach(r=>{if(r.style.display!=='none')r.querySelector('input').checked=true;});cnt();};
+      md.querySelector('#mvNone').onclick=()=>{rows.forEach(r=>{if(r.style.display!=='none')r.querySelector('input').checked=false;});cnt();};
+      md.querySelector('#mvList').onchange=cnt;cnt();}
+    md.querySelector('#pvAdd').onclick=()=>{
+      if(rec&&added){const k=S.cards.filter(c=>deckOf(c)===m.name).length;return confirmBox(`重新加入會清除「${m.name}」現有的 ${k} 張卡和背誦進度，確定嗎？`,run);}
+      run();};
+    const run=()=>{
+      if(rec){if(added)S.cards=S.cards.filter(c=>deckOf(c)!==m.name);S.decks[m.name]={mode:'recite',hint:m.hint||'cloze',rmode:m.rmode||'loop',dict:m.dict||''};m.cards.forEach((c,i)=>S.cards.push(mk({front:c[0],deck:m.name,idx:i})));}
+      else{const pick=rows.map(r=>r.querySelector('input').checked);if(!pick.some(Boolean))return toast('還沒有勾選任何卡片');if(m.dict)S.decks[m.name]={...dset(m.name),dict:m.dict};m.cards.forEach((c,ci)=>{if(pick[ci])S.cards.push(mk({front:c[0],back:c[1],reading:c[2],backReading:c[3],deck:m.name}));});}
+      save();close();renderMarket();refreshAll();
+      toast(rec&&added?`已重新加入「${m.name}」`:`已加入「${m.name}」`,'去複習',()=>{curDeck=m.name;go('study');});};
+  });
+}
+/* ================= import / export ================= */
+let mkSeq=0;
+function mk(o){const c={id:uid(),front:o.front,back:o.back||'',reading:o.reading||'',backReading:o.backReading||'',deck:o.deck||'未分類',stage:0,due:Date.now(),created:Date.now()+(mkSeq++)/1000,reviews:0};if(o.idx!=null)c.idx=o.idx;return c;}
+function splitText(t,by='auto',group=1){
+  t=String(t).replace(/\r/g,'').trim();let parts;
+  if(by==='line')parts=t.split(/\n+/);
+  else parts=t.split(by==='comma'?/(?<=[。！？；，、：!?;,:])|\n+/:/(?<=[。！？；!?;])|\n+/);
+  parts=parts.map(s=>s&&s.trim()).filter(Boolean);
+  if(by==='auto'){const out=[];parts.forEach(p=>{if([...p].length<=26){out.push(p);return;}let cur='';p.split(/(?<=[，、：,:])/).forEach(s=>{if(cur&&[...(cur+s)].length>18){out.push(cur);cur=s;}else cur+=s;});if(cur)out.push(cur);});parts=out;}
+  if(group>1){const g=[];for(let i=0;i<parts.length;i+=group)g.push(parts.slice(i,i+group).join(''));parts=g;}
+  return parts;}
+function splitLine(l){if(l.includes('|'))return l.split('|').map(s=>s.trim());if(l.includes('\t'))return l.split('\t').map(s=>s.trim());
+  const o=[];let c='',q=false;for(let i=0;i<l.length;i++){const ch=l[i];if(q){if(ch==='"'&&l[i+1]==='"'){c+='"';i++;}else if(ch==='"')q=false;else c+=ch;}else if(ch==='"')q=true;else if(ch===','){o.push(c.trim());c='';}else c+=ch;}o.push(c.trim());return o;}
+const IMP={type:'qa',split:'auto',group:1,hint:'cloze',rmode:'loop'};
+function impOpts(){
+  $$('#impType button').forEach(b=>b.classList.toggle('on',b.dataset.v===IMP.type));
+  [['#splitSeg','split'],['#groupSeg','group'],['#hintSeg','hint'],['#rmodeSeg','rmode']].forEach(([id,k])=>$$(id+' button').forEach(b=>b.classList.toggle('on',String(b.dataset.v)===String(IMP[k]))));
+  const rec=IMP.type==='recite'||IMP.type==='solo';$('#recOpts').style.display=rec?'':'none';$('#qaHelp').style.display=(rec||IMP.type==='article')?'none':'';const rb=$('#rmodeBox');if(rb)rb.style.display=IMP.type==='recite'?'':'none';
+  $('#impText').placeholder=IMP.type==='article'?'貼上一段文章，例如：\n般若是指智慧，能照見諸法實相。\n四聖諦：苦、集、滅、道。\n系統會找出「X是Y」「X指Y」「X：Y」這類定義句，列成候選卡，你勾選後才匯入。':rec?'把整段經文直接貼上，例如：\n觀自在菩薩，行深般若波羅蜜多時，照見五蘊皆空，度一切苦厄。舍利子……':'般若 | 智慧 | 波惹\n四聖諦 | 苦、集、滅、道\napple | 蘋果';
+  recPreview();}
+function recPreview(){if(IMP.type!=='recite')return;const t=$('#impText').value.trim();
+  if(!t){$('#recPrev').textContent='貼上經文後，這裡會預覽切分結果。';return;}
+  const p=splitText(t,IMP.split,IMP.group);$('#recPrev').innerHTML=`將切成 <b>${p.length}</b> 張：`+p.slice(0,4).map((s,i)=>`<div>${i+1}．${esc(s)}</div>`).join('')+(p.length>4?'<div>……</div>':'');}
+$$('#impType button').forEach(b=>b.onclick=()=>{IMP.type=b.dataset.v;impOpts();});
+[['#splitSeg','split'],['#groupSeg','group',Number],['#hintSeg','hint'],['#rmodeSeg','rmode']].forEach(([id,k,cv])=>$$(id+' button').forEach(b=>b.onclick=()=>{IMP[k]=cv?cv(b.dataset.v):b.dataset.v;impOpts();}));
+$('#impText').addEventListener('input',recPreview);
+function importSolo(txt,deck){
+  const p=splitText(txt,IMP.split,IMP.group);if(!p.length)return toast('沒有可切分的內容');
+  S.decks[deck]={...dset(deck),mode:'solo',hint:IMP.hint==='prev'?'cloze':IMP.hint,dict:($('#impDict').value.trim()||dset(deck).dict)};
+  p.forEach(x=>S.cards.push(mk({front:x,deck})));
+  save();refreshAll();renderMarket();toast(`已建立單獨記憶「${deck}」${p.length} 張`,'去背誦',()=>{curDeck=deck;go('study');});}
+function importRecite(txt,deck){
+  const p=splitText(txt,IMP.split,IMP.group);if(!p.length)return toast('沒有可切分的內容');
+  const base=S.cards.filter(c=>deckOf(c)===deck&&c.idx!=null).reduce((m,c)=>Math.max(m,c.idx+1),0);
+  S.decks[deck]={...dset(deck),mode:'recite',hint:IMP.hint,rmode:IMP.rmode,dict:($('#impDict').value.trim()||dset(deck).dict)};
+  p.forEach((s,i)=>S.cards.push(mk({front:s,deck,idx:base+i})));
+  save();refreshAll();renderMarket();toast(`已建立經文背誦「${deck}」${p.length} 句`,'去背誦',()=>{curDeck=deck;go('study');});}
+function cleanCard(x,deck,keep){if(!x||typeof x.front!=='string'||!x.front.trim())return null;const c=mk({...x,deck:x.deck||deck});
+  const num=v=>typeof v==='number'&&Number.isFinite(v);
+  if(num(x.stage))c.stage=Math.max(0,Math.min(MAXS,Math.round(x.stage)));if(num(x.due))c.due=x.due;if(num(x.reviews))c.reviews=Math.max(0,x.reviews);if(num(x.idx))c.idx=x.idx;
+  if(keep){if(typeof x.id==='string'&&x.id)c.id=x.id;if(num(x.created))c.created=x.created;if(num(x.last))c.last=x.last;}return c;}
+function importJSON(d,arr,deck){
+  const full=!Array.isArray(d)&&d.app==='nian';
+  const doIt=replace=>{
+    const list=arr.map(x=>cleanCard(x,deck,full)).filter(Boolean);
+    if(replace){BAD=false;S.cards=list;S.decks=(d.decks&&typeof d.decks==='object')?d.decks:{};if(d.log&&typeof d.log==='object')S.log=d.log;if(d.newLog&&typeof d.newLog==='object')S.newLog=d.newLog;if(d.set&&typeof d.set==='object')S.set={...DEF,...d.set};}
+    let skip=0;
+    if(!replace){const have=new Set(S.cards.map(c=>c.id));list.forEach(c=>{if(full&&have.has(c.id)){skip++;return;}S.cards.push(c);});
+      if(d.decks&&typeof d.decks==='object')Object.keys(d.decks).forEach(k=>{if(!S.decks[k])S.decks[k]=d.decks[k];});}
+    save();apply();setIcon();refreshAll();renderMarket();toast(replace?`已還原備份：${list.length} 張`:`已匯入 ${list.length-skip} 張`+(skip?`，略過 ${skip} 張重複的卡`:''));};
+  if(full&&S.cards.length)modal(`<h3>還原備份</h3><p>這是念念的備份檔（${arr.length} 張）。要怎麼匯入？</p><p class="tiny muted">「取代全部」會用備份換掉目前所有卡片、進度與設定；「合併」只加入目前沒有的卡。</p><div class="row" style="justify-content:flex-end;margin-top:14px;flex-wrap:wrap"><button class="btn" id="mN">取消</button><button class="btn" id="mM">合併</button><button class="btn pri" id="mR" style="background:var(--bad);border-color:var(--bad);color:#fff">取代全部</button></div>`,m=>{m.querySelector('#mN').onclick=close;m.querySelector('#mM').onclick=()=>{close();doIt(false);};m.querySelector('#mR').onclick=()=>{close();doIt(true);};});
+  else doIt(full);}
+function importText(txt,deck,forceQA){txt=txt.trim();if(!txt)return toast('沒有內容');
+  if(/^[\[{]/.test(txt)){let d;try{d=JSON.parse(txt);}catch(e){d=null;}
+    const arr=d&&(Array.isArray(d)?d:d.cards);
+    if(Array.isArray(arr))return importJSON(d,arr,deck);
+    if(txt[0]==='{')return toast('JSON 格式無法辨識');}
+  if(IMP.type==='recite'&&!forceQA)return importRecite(txt,deck);
+  if(IMP.type==='solo'&&!forceQA)return importSolo(txt,deck);
+  const nl=s=>(s||'').replace(/\\n/g,'\n');let n=0;const used=new Set();
+  txt.replace(/^﻿/,'').split(/\r?\n/).forEach(l=>{if(!l.trim()||l.trim().startsWith('#'))return;const p=splitLine(l);if(!p[0])return;
+    if(n===0&&/^(正面|front|題目|問題)$/i.test(p[0].trim()))return;
+    const dk=(p[4]||'').trim()||deck;used.add(dk);
+    S.cards.push(mk({front:nl(p[0]),back:nl(p[1]),reading:p[2],backReading:p[3],deck:dk}));n++;});
+  save();refreshAll();renderMarket();toast(n?`已匯入 ${n} 張到${[...used].map(d=>'「'+d+'」').join('')}`:'沒有可匯入的行');}
+const ART=/^(.{1,12}?)(意思是|稱為|叫做|就是|即是|是指|是|指|即|代表)(.{2,})$/;
+function parseCands(txt,deck){
+  txt=txt.trim();
+  if(IMP.type==='recite'||IMP.type==='solo')return splitText(txt,IMP.split,IMP.group).map((s,i)=>({front:s,deck,idx:i}));
+  if(IMP.type==='article'){const out=[],seen=new Set();
+    txt.split(/[。！？!?\n]+/).map(x=>x.trim()).filter(Boolean).forEach(sen=>{
+      const m=sen.match(/^([^：:，,；;]{1,12})[：:]\s*(.{2,})$/)||sen.match(ART);if(!m)return;
+      const term=m[1].trim(),def=(m[3]||m[2]).trim().replace(/^(是指|指|即是|是|即|為|就是)/,'').trim();if(!def)return;
+      if([...term].length<2||/[的了嗎呢]$/.test(term)||seen.has(term))return;seen.add(term);
+      out.push({front:term+'是什麼？',back:def,deck});});
+    return out;}
+  const nl=x=>(x||'').replace(/\\n/g,'\n');const res=[];
+  txt.replace(/^﻿/,'').split(/\r?\n/).forEach(l=>{if(!l.trim()||l.trim().startsWith('#'))return;const p=splitLine(l);if(!p[0])return;
+    if(res.length===0&&/^(正面|front|題目|問題)$/i.test(p[0].trim()))return;
+    res.push({front:nl(p[0]),back:nl(p[1]),reading:p[2]||'',backReading:p[3]||'',deck:(p[4]||'').trim()||deck});});
+  return res;
+}
+function openPreview(list,deck){
+  const kind=IMP.type;const exists=c=>S.cards.some(x=>x.front===c.front&&deckOf(x)===(c.deck||deck));
+  const items=list.map(c=>({...c,dup:exists(c),on:!exists(c)}));
+  const cnt=()=>{$('#pvCount').textContent=`已勾選 ${items.filter(x=>x.on).length} / ${items.length}`;};
+  const draw=()=>{const q=$('#pvQ').value.trim().toLowerCase();
+    $('#pvList').innerHTML=items.map((x,i)=>({x,i})).filter(({x})=>!q||(x.front+x.back+x.deck).toLowerCase().includes(q)).map(({x,i})=>`<label class="item pvi"><input type="checkbox" data-i="${i}" ${x.on?'checked':''}><span class="ckb"></span><div class="t"><b>${esc(x.front.split('\n')[0])}</b>${x.back?`<div class="b">${esc(x.back)}</div>`:''}${x.dup?'<span class="pill">已有，預設不勾</span>':''}</div></label>`).join('')||'<p class="muted">沒有符合的卡片</p>';
+    cnt();};
+  modal(`<h3>挑選要匯入的卡片</h3><p class="tiny muted">共 ${items.length} 張候選。${kind==='recite'?'經文建議全選，才能保留前後句順序。':kind==='article'?'文章是用規則找出的定義句，請逐張確認。':''}</p>
+   <input type="search" id="pvQ" placeholder="搜尋候選卡…">
+   <div class="row" style="margin:8px 0"><button class="btn sm" id="pvAll">全選</button><button class="btn sm" id="pvNone">全不選</button><span class="tiny muted" id="pvCount"></span></div>
+   <div id="pvList" style="max-height:50vh;overflow:auto"></div>
+   <div class="row" style="justify-content:flex-end;margin-top:12px"><button class="btn" id="pvX">取消</button><button class="btn pri" id="pvGo">匯入勾選的卡</button></div>`,()=>{
+    draw();
+    $('#pvQ').oninput=draw;
+    $('#pvList').onchange=e=>{const i=+e.target.dataset.i;if(!isNaN(i)){items[i].on=e.target.checked;cnt();}};
+    $('#pvAll').onclick=()=>{items.forEach(x=>x.on=true);draw();};
+    $('#pvNone').onclick=()=>{items.forEach(x=>x.on=false);draw();};
+    $('#pvX').onclick=close;
+    $('#pvGo').onclick=()=>{const sel=items.filter(x=>x.on);if(!sel.length)return toast('還沒有勾選任何卡片');close();
+      if(kind==='recite'){const base=S.cards.filter(c=>deckOf(c)===deck&&c.idx!=null).reduce((m,c)=>Math.max(m,c.idx+1),0);
+        S.decks[deck]={...dset(deck),mode:'recite',hint:IMP.hint,rmode:IMP.rmode,dict:($('#impDict').value.trim()||dset(deck).dict)};
+        sel.forEach(x=>S.cards.push(mk({front:x.front,deck,idx:base+x.idx})));}
+      else if(kind==='solo'){S.decks[deck]={...dset(deck),mode:'solo',hint:IMP.hint==='prev'?'cloze':IMP.hint,dict:($('#impDict').value.trim()||dset(deck).dict)};sel.forEach(x=>S.cards.push(mk({front:x.front,deck})));}
+      else sel.forEach(x=>S.cards.push(mk({front:x.front,back:x.back,reading:x.reading||'',backReading:x.backReading||'',deck:x.deck||deck})));
+      save();refreshAll();renderMarket();toast(`已匯入 ${sel.length} 張`);$('#impText').value='';recPreview();};
+  });
+}
+$('#impPrev').onclick=()=>{const txt=$('#impText').value.trim();if(!txt)return toast('請先貼上內容');
+  if(/^[\[{]/.test(txt))return toast('JSON 請用「直接匯入」');
+  const deck=$('#impDeck').value.trim()||(IMP.type==='recite'?'經文背誦':IMP.type==='solo'?'單獨記憶':IMP.type==='article'?'文章整理':'未分類');
+  const list=parseCands(txt,deck);
+  if(!list.length)return toast(IMP.type==='article'?'找不到「X是Y」「X：Y」這類定義句，可改用問答格式':'沒有可匯入的內容');
+  openPreview(list,deck);};
+$('#impBtn').onclick=()=>{importText($('#impText').value,$('#impDeck').value.trim()||(IMP.type==='recite'?'經文背誦':IMP.type==='solo'?'單獨記憶':'未分類'));$('#impText').value='';recPreview();};
+
+$('#impFile').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();
+  r.onload=()=>{const buf=r.result;let t=new TextDecoder('utf-8').decode(buf);
+    if(t.includes('\uFFFD')){try{const b5=new TextDecoder('big5').decode(buf);if(!b5.includes('\uFFFD')||b5.split('\uFFFD').length<t.split('\uFFFD').length)t=b5;}catch(_){}}
+    importText(t,$('#impDeck').value.trim()||f.name.replace(/\.\w+$/,''));};
+  r.readAsArrayBuffer(f);e.target.value='';};
+const FMT={
+ txt:{body:`# 這是註解行，會被略過
+# 格式：正面 | 背面 | 讀音 | 背面讀音 | 卡組
+般若 | 智慧；照見諸法實相的智慧 | 波惹
+四聖諦 | 苦、集、滅、道
+三法印 | 諸行無常\\n諸法無我\\n涅槃寂靜
+學而時習之 | 不亦說乎？ | | 不亦悅乎？ | 論語
+apple | (n.) 蘋果 | | | 英文單字
+photosynthesis | (n.) 光合作用 | | | 英文單字`,tip:'用 | 分隔欄位，空著的欄位保留 | 即可。最簡單的寫法只要「正面 | 背面」。用記事本、Word、Google 文件都能編輯，存成 .txt 匯入。'},
+ csv:{body:`正面,背面,讀音,背面讀音,卡組
+般若,智慧；照見諸法實相的智慧,波惹,,佛學
+四聖諦,苦、集、滅、道,,,佛學
+"溫故而知新,可以為師矣",出自《論語・為政》,,,論語
+apple,(n.) 蘋果,,,英文單字
+三角形面積,底 × 高 ÷ 2,,,數學`,tip:'用 Excel 或 Google 試算表做：A 欄正面、B 欄背面、C 欄讀音、D 欄背面讀音、E 欄卡組，第一列可放標題。內容含逗號時，Excel 會自動加上引號。'},
+ json:{body:`[
+  {"front":"般若","back":"智慧","reading":"波惹","deck":"佛學"},
+  {"front":"四聖諦","back":"苦、集、滅、道","deck":"佛學"},
+  {"front":"apple","back":"(n.) 蘋果","deck":"英文單字"}
+]`,tip:'適合程式產生或備份還原。本工具「匯出 JSON」的檔案可直接匯入，會連同複習進度（stage、due）一起還原。'}};
+let fmtCur='txt';
+function showFmt(){$('#fmtBox').textContent=FMT[fmtCur].body;$('#fmtTip').textContent=FMT[fmtCur].tip;$$('#fmtSeg button').forEach(b=>b.classList.toggle('on',b.dataset.f===fmtCur));}
+$$('#fmtSeg button').forEach(b=>b.onclick=()=>{fmtCur=b.dataset.f;showFmt();});
+$('#fmtFill').onclick=()=>{$('#impText').value=FMT[fmtCur].body;$('#impDeck').value=$('#impDeck').value||'匯入範例';$('#impText').scrollIntoView({behavior:'smooth',block:'center'});toast('已填入，按「匯入」就會加入');};
+$('#fmtCopy').onclick=async()=>{try{await navigator.clipboard.writeText(FMT[fmtCur].body);toast('已複製範例');}catch(e){toast('請長按範例文字手動複製');}};
+showFmt();
+function showExp(t){const o=$('#expOut');o.style.display='';$('#expCopy').style.display='';o.value=t;o.select();}
+async function saveFile(name,text,type){const blob=new Blob([text],{type});
+  try{const f=new File([blob],name,{type});if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f],title:name});return true;}}catch(e){if(e&&e.name==='AbortError')return true;}
+  try{const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},1000);return true;}catch(e){return false;}}
+$('#expJson').onclick=()=>{const j=JSON.stringify({app:'nian',v:4,exported:Date.now(),decks:S.decks,cards:S.cards,log:S.log,newLog:S.newLog,set:S.set},null,1);showExp(j);saveFile(`念念備份-${today()}.json`,j,'application/json');};
+$('#expTxt').onclick=()=>showExp(S.cards.map(c=>[c.front,c.back,c.reading,c.backReading].map(x=>(x||'').replace(/\n/g,'\\n').replace(/\|/g,'／')).join(' | ').replace(/( \| )+$/,'')).join('\n'));
+$('#expCopy').onclick=async()=>{try{await navigator.clipboard.writeText($('#expOut').value);toast('已複製');}catch(e){$('#expOut').select();toast('請長按文字框手動複製');}};
+
+/* ================= my cards ================= */
+const STAT={new:'新卡',due:'待複習',learn:'學習中',master:'已熟記'};
+function stOf(c,now=Date.now()){return !c.reviews?'new':(c.due<=now&&!isSeq(c))?'due':c.stage>=MAXS?'master':'learn';}
+let libStat='all',selMode=false;const selIds=new Set();
+$('#libStatus').innerHTML=[['all','全部'],...Object.entries(STAT)].map(([k,n])=>`<button class="chip ${k==='all'?'on':''}" data-s="${k}">${n}</button>`).join('');
+$$('#libStatus .chip').forEach(b=>b.onclick=()=>{libStat=b.dataset.s;$$('#libStatus .chip').forEach(x=>x.classList.toggle('on',x===b));renderLib();});
+function libFiltered(){
+  const sel=$('#libDeck').value,q=$('#libQ').value.trim().toLowerCase(),now=Date.now();
+  let L=S.cards.filter(c=>inDeck(c,sel)&&(libStat==='all'||stOf(c,now)===libStat)&&(!q||[c.front,c.back,c.reading,c.backReading,c.deck].some(x=>(x||'').toLowerCase().includes(q))));
+  const so=$('#libSort').value;L.sort(so==='new'?(a,b)=>b.created-a.created:so==='stage'?(a,b)=>a.stage-b.stage:so==='order'?(a,b)=>deckOf(a).localeCompare(deckOf(b))||(a.idx??1e9)-(b.idx??1e9)||a.created-b.created:(a,b)=>a.due-b.due);
+  return L;}
+function renderLib(){
+  const ds=decks(),sel=$('#libDeck'),cv=sel.value;
+  sel.innerHTML='<option value="">全部卡組</option>'+ds.map(d=>`<option ${d===cv?'selected':''} value="${esc(d)}">${esc(d)}${dset(d).mode==='recite'?'（經文）':''}</option>`).join('');
+  const L=libFiltered(),now=Date.now();
+  // counts on chips
+  const base=S.cards.filter(c=>inDeck(c,sel.value));const cnt={all:base.length,new:0,due:0,learn:0,master:0};base.forEach(c=>cnt[stOf(c,now)]++);
+  $$('#libStatus .chip').forEach(b=>{const k=b.dataset.s;b.textContent=(k==='all'?'全部':STAT[k])+' '+cnt[k];});
+  $('#libCount').textContent=`共 ${S.cards.length} 張 · 顯示 ${L.length} 張`;
+  $('#selBtn').textContent=selMode?'完成':'選取';
+  $('#libList').innerHTML=L.length?L.slice(0,400).map(c=>{const s=stOf(c,now);return `<div class="item ${selMode?'selectable':''} ${selIds.has(c.id)?'picked':''}" data-id="${c.id}">${selMode?'<span class="ck"></span>':''}<div class="t"><b>${c.idx!=null&&isRec(c)?`<span class="tiny muted">${c.idx+1}　</span>`:''}${esc(c.front.split('\n')[0])}</b>${c.reading?` <span class="tiny muted">［${esc(c.reading)}］</span>`:''}${c.back?`<div class="b">${esc(c.back.replace(/\n/g,'；'))}</div>`:''}<span class="pill">${esc(deckOf(c))}</span>${isSolo(c)?`<span class="pill">單獨記憶・${HINTS[dset(deckOf(c)).hint]}</span>`:isRec(c)?`<span class="pill">${dset(deckOf(c)).rmode==='daily'?'每日一句':'輪播'}・${HINTS[dset(deckOf(c)).hint]}</span>`:''}<span class="pill ${s==='due'?'due':''}">${STAT[s]}${s==='learn'?' · '+fmt(c.due-now)+'後':''}</span>${c.stage&&s!=='master'?`<span class="pill">階段 ${c.stage}</span>`:''}</div>${selMode?'':`<button class="btn sm ghost" data-ed="${c.id}">編輯</button>`}</div>`;}).join('')+(L.length>400?'<p class="tiny muted">只顯示前 400 張；「全選」仍會選取全部篩選結果。</p>':''):'<p class="muted" style="margin:6px 0">沒有符合的卡片</p>';
+  $$('[data-ed]').forEach(b=>b.onclick=()=>edit(S.cards.find(c=>c.id===b.dataset.ed)));
+  if(selMode)$$('#libList .item').forEach(it=>it.onclick=()=>{const id=it.dataset.id;selIds.has(id)?selIds.delete(id):selIds.add(id);it.classList.toggle('picked');updSel();});
+  const dn=sel.value;
+  $('#deckOps').innerHTML=`<button class="btn sm" id="bulkDel" style="color:var(--bad)">依類別批次刪除…</button>`+(dn?`<button class="btn sm" id="deckPr">練習這個卡組</button><button class="btn sm" id="deckSet">卡組設定</button><button class="btn sm" id="renDeck">重新命名</button>`:'');
+  $('#bulkDel').onclick=bulkDelete;
+  if(dn){$('#deckPr').onclick=()=>{curDeck=dn;STUDY_REQ={practice:true};go('study');};$('#deckSet').onclick=()=>deckSettings(dn);
+    $('#renDeck').onclick=()=>modal(`<h3>重新命名</h3><input type="text" id="rn" value="${esc(dn)}"><div class="row" style="justify-content:flex-end;margin-top:14px"><button class="btn" id="rX">取消</button><button class="btn pri" id="rS">儲存</button></div>`,m=>{m.querySelector('#rX').onclick=close;m.querySelector('#rS').onclick=()=>{const v=m.querySelector('#rn').value.trim();if(!v||v===dn)return close();S.cards.forEach(c=>{if(deckOf(c)===dn)c.deck=v;});if(S.decks[dn]){S.decks[v]=S.decks[dn];delete S.decks[dn];}save();close();refreshAll();setTimeout(()=>{renderLib();$('#libDeck').value=v;renderLib();});};});}
+  updSel();
+}
+function updSel(){const bar=$('#selBar');bar.classList.toggle('on',selMode);document.body.classList.toggle('selon',selMode&&cur==='mine');$('#selN').textContent=selIds.size;$$('#selBar [data-a]').forEach(b=>b.disabled=!selIds.size&&b.dataset.a!=='all'&&b.dataset.a!=='done');}
+$('#selBtn').onclick=()=>{selMode=!selMode;selIds.clear();renderLib();};
+$('#selBar').addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b)return;const a=b.dataset.a;
+  const picked=()=>S.cards.filter(c=>selIds.has(c.id));
+  if(a==='all'){const L=libFiltered();const allOn=L.every(c=>selIds.has(c.id));L.forEach(c=>allOn?selIds.delete(c.id):selIds.add(c.id));renderLib();}
+  else if(a==='done'){selMode=false;selIds.clear();renderLib();}
+  else if(a==='practice'){const ids=[...selIds];curDeck='';selMode=false;selIds.clear();STUDY_REQ={practice:true,ids};go('study');}
+  else if(a==='del')confirmBox(`刪除選取的 ${selIds.size} 張卡片？此動作無法復原。`,()=>{const n=selIds.size;S.cards=S.cards.filter(c=>!selIds.has(c.id));selIds.clear();pruneDecks();save();renderLib();refreshAll();toast(`已刪除 ${n} 張`);});
+  else if(a==='reset')confirmBox(`把選取的 ${selIds.size} 張重設為新卡？`,()=>{picked().forEach(c=>{c.stage=0;c.reviews=0;c.due=Date.now();});save();renderLib();refreshAll();toast('已重設');});
+  else if(a==='move')modal(`<h3>移到卡組</h3><input type="text" id="mv" list="deckList" placeholder="輸入或選擇卡組名稱"><div class="row" style="justify-content:flex-end;margin-top:14px"><button class="btn" id="mX">取消</button><button class="btn pri" id="mS">移動</button></div>`,m=>{m.querySelector('#mX').onclick=close;m.querySelector('#mS').onclick=()=>{const v=m.querySelector('#mv').value.trim();if(!v)return;picked().forEach(c=>c.deck=v);pruneDecks();save();close();selIds.clear();renderLib();refreshAll();toast(`已移到「${v}」`);};});
+});
+function bulkDelete(){
+  const now=Date.now(),ds=decks();
+  const cnt=(d,s)=>S.cards.filter(c=>deckOf(c)===d&&stOf(c,now)===s).length;
+  modal(`<h3>依類別批次刪除</h3><p class="tiny muted" style="margin:0 0 6px">勾選卡組與狀態，兩者都符合的卡片才會被刪除。</p>
+   <div class="row sb"><span class="f">卡組</span><button class="btn sm ghost" id="bdAll">全選／全不選</button></div>
+   <div class="panel" style="padding:4px 12px;max-height:34vh;overflow:auto">${ds.map(d=>`<label class="ckrow"><input type="checkbox" data-d="${esc(d)}"><span>${esc(d)}</span><span class="tiny muted">${S.cards.filter(c=>deckOf(c)===d).length} 張</span></label>`).join('')||'<p class="muted">沒有卡片</p>'}</div>
+   <span class="f">狀態</span>
+   <div class="row" id="bdStat">${Object.entries(STAT).map(([k,n])=>`<label class="ckpill"><input type="checkbox" data-s="${k}" checked><span>${n}</span></label>`).join('')}</div>
+   <p id="bdCount" style="margin:14px 0 0;font-weight:700"></p>
+   <div class="row" style="justify-content:flex-end;margin-top:12px"><button class="btn" id="bdX">取消</button><button class="btn pri" id="bdGo" style="background:var(--bad);border-color:var(--bad);color:#fff">刪除</button></div>`,m=>{
+    const sel=()=>{const D=new Set([...m.querySelectorAll('[data-d]:checked')].map(i=>i.dataset.d)),St=new Set([...m.querySelectorAll('[data-s]:checked')].map(i=>i.dataset.s));return S.cards.filter(c=>D.has(deckOf(c))&&St.has(stOf(c,now)));};
+    const upd=()=>{const n=sel().length;m.querySelector('#bdCount').textContent=n?`將刪除 ${n} 張卡片`:'尚未選取';m.querySelector('#bdGo').disabled=!n;m.querySelector('#bdGo').textContent=n?`刪除 ${n} 張`:'刪除';};
+    m.querySelectorAll('input').forEach(i=>i.onchange=upd);
+    m.querySelector('#bdAll').onclick=()=>{const bx=[...m.querySelectorAll('[data-d]')];const on=bx.every(i=>i.checked);bx.forEach(i=>i.checked=!on);upd();};
+    m.querySelector('#bdX').onclick=close;
+    m.querySelector('#bdGo').onclick=()=>{const kill=new Set(sel().map(c=>c.id));confirmBox(`確定刪除 ${kill.size} 張卡片？此動作無法復原。`,()=>{S.cards=S.cards.filter(c=>!kill.has(c.id));pruneDecks();save();renderLib();refreshAll();toast(`已刪除 ${kill.size} 張`);});};
+    upd();});
+}
+function deckSettings(dn){
+  const s=dset(dn);let mode=s.mode,hint=s.hint,rmode=s.rmode||'loop';
+  modal(`<h3>卡組設定</h3><p class="tiny muted" style="margin:0 0 6px">${esc(dn)}・${S.cards.filter(c=>deckOf(c)===dn).length} 張</p>
+   <span class="f">卡片模式</span><div class="seg" id="dsMode"><button data-v="qa">問答翻卡</button><button data-v="solo">單獨記憶</button><button data-v="recite">前後連貫背誦</button></div>
+   <div class="tiny muted" id="dsModeTip" style="margin-top:6px;line-height:1.7"></div>
+   <div id="dsHintBox"><span class="f">背誦提示方式</span><div class="seg" id="dsHint">${Object.entries(HINTS).map(([k,n])=>`<button data-v="${k}">${n}</button>`).join('')}</div>
+   <div class="tiny muted" id="dsHintTip" style="margin-top:6px;line-height:1.7"></div></div>
+   <div id="dsRBox"><span class="f">背誦方式</span><div class="seg" id="dsRmode"><button data-v="loop">輪播</button><button data-v="daily">每日一句</button></div>
+   <div class="tiny muted" id="dsRTip" style="margin-top:6px;line-height:1.7"></div></div>
+   <label class="f">讀音替換表（念讀時自動替換，每行一組「原字=讀音字」）</label><textarea id="dsDict" style="min-height:90px" placeholder="般若=波惹&#10;揭諦=接地&#10;南無=拿摩">${esc(s.dict)}</textarea>
+   <div class="row" style="justify-content:flex-end;margin-top:14px"><button class="btn" id="dsX">取消</button><button class="btn pri" id="dsS">儲存</button></div>`,m=>{
+    const tips={qa:'正面出題，翻面看答案。適合單字、名詞解釋、問答。',solo:'每張卡只有正面，不依賴前後句；用挖空提示默背，再按忘了／模糊／記得，依艾賓浩斯間隔排程。適合單獨背一句經文、一個名詞。',recite:'依卡片順序出題，顯示上一句、這一句以提示呈現，按下後原地揭示，不翻面。適合經文、詩詞、課文背誦。'};
+    const htips={cloze:'隨機挖空部分字，階段越高挖得越多（約 30% → 100%），最符合循序漸進。',first:'只顯示第一個字，其餘以底線代替。',prev:'只顯示上一句，這一句全部以底線代替（可看出字數）。',none:'只顯示上一句，不顯示字數，難度最高。'};
+    const upd=()=>{m.querySelectorAll('#dsMode button').forEach(b=>b.classList.toggle('on',b.dataset.v===mode));m.querySelectorAll('#dsHint button').forEach(b=>b.classList.toggle('on',b.dataset.v===hint));
+      m.querySelector('#dsHintBox').style.display=mode==='qa'?'none':'';m.querySelector('#dsRBox').style.display=mode==='recite'?'':'none';
+      m.querySelectorAll('#dsRmode button').forEach(b=>b.classList.toggle('on',b.dataset.v===rmode));
+      m.querySelector('#dsRTip').textContent=rmode==='loop'?'依序一句一句循環，按「下一句」換句；按了不會消失，也不影響排程，適合日常反覆背。':'每天只出現一句，今天背完後明天換下一句，適合分段背長篇。';m.querySelector('#dsModeTip').textContent=tips[mode];m.querySelector('#dsHintTip').textContent=htips[hint];};
+    m.querySelectorAll('#dsMode button').forEach(b=>b.onclick=()=>{mode=b.dataset.v;upd();});
+    m.querySelectorAll('#dsHint button').forEach(b=>b.onclick=()=>{hint=b.dataset.v;upd();});
+    m.querySelectorAll('#dsRmode button').forEach(b=>b.onclick=()=>{rmode=b.dataset.v;upd();});
+    m.querySelector('#dsX').onclick=close;
+    m.querySelector('#dsS').onclick=()=>{const dict=m.querySelector('#dsDict').value.trim(),nb=S.cards.filter(c=>deckOf(c)===dn&&c.back).length;
+      if(mode==='solo'&&nb&&dset(dn).mode!=='solo')return confirmBox(`改成「單獨記憶」會把 ${nb} 張卡的背面併到正面，之後無法自動分回去，確定嗎？`,()=>saveDs(dict));
+      saveDs(dict);};
+    const saveDs=dict=>{S.decks[dn]={...S.decks[dn],mode,hint,rmode,dict};
+      if(mode==='solo'){S.cards.filter(c=>deckOf(c)===dn).forEach(c=>{if(c.back){c.front=c.front+'\n'+c.back;c.back='';}});}
+      if(mode==='recite'){const cs=S.cards.filter(c=>deckOf(c)===dn);if(cs.some(c=>c.idx==null))cs.sort((a,b)=>(a.idx??1e9)-(b.idx??1e9)||a.created-b.created).forEach((c,i)=>c.idx=i);}
+      save();close();renderLib();toast('已儲存卡組設定');};
+    upd();});
+}
+$('#libQ').oninput=renderLib;$('#libDeck').onchange=()=>{selIds.clear();renderLib();};$('#libSort').onchange=renderLib;
+
+function edit(c){const isNew=!c;c=c||{front:'',back:'',reading:'',backReading:'',deck:$('#libDeck').value||''};
+  modal(`<h3>${isNew?'新增卡片':'編輯卡片'}</h3>
+  <label class="f">正面</label><textarea id="eF" style="min-height:64px">${esc(c.front)}</textarea>
+  <label class="f">背面（可換行分段）</label><textarea id="eB" style="min-height:90px">${esc(c.back)}</textarea>
+  <label class="f">正面讀音（念讀時取代正面，可用同音字）</label><div class="row" style="flex-wrap:nowrap"><input type="text" id="eR" value="${esc(c.reading)}"><button class="btn sm" id="eRt" aria-label="試聽">${ICON.spk}</button></div>
+  <label class="f">背面讀音（選填）</label><div class="row" style="flex-wrap:nowrap"><input type="text" id="eBR" value="${esc(c.backReading)}"><button class="btn sm" id="eBRt" aria-label="試聽">${ICON.spk}</button></div>
+  <label class="f">卡組</label><input type="text" id="eD" value="${esc(c.deck)}" list="deckList">
+  <div class="row sb" style="margin-top:16px">${isNew?'<span></span>':'<button class="btn" id="eDel" style="color:var(--bad)">刪除</button>'}<div class="row"><button class="btn" id="eX">取消</button><button class="btn pri" id="eS">儲存</button></div></div>`,m=>{
+    const v=id=>m.querySelector(id).value.trim();
+    m.querySelector('#eX').onclick=close;m.querySelector('#eRt').onclick=()=>speak(v('#eR')||v('#eF'));m.querySelector('#eBRt').onclick=()=>speak(v('#eBR')||v('#eB'));
+    m.querySelector('#eS').onclick=()=>{if(!v('#eF'))return toast('正面不能空白');const o={front:v('#eF'),back:v('#eB'),reading:v('#eR'),backReading:v('#eBR'),deck:v('#eD')||'未分類'};if(isNew)S.cards.push(mk(o));else Object.assign(c,o);save();close();renderLib();refreshAll();toast(isNew?'已新增':'已儲存');};
+    const d=m.querySelector('#eDel');if(d)d.onclick=()=>confirmBox('確定刪除這張卡片？',()=>{S.cards=S.cards.filter(x=>x!==c);pruneDecks();save();renderLib();refreshAll();toast('已刪除');});});}
+$('#addBtn').onclick=()=>edit(null);
+$('#resetProg').onclick=()=>confirmBox('所有卡片回到新卡狀態，確定嗎？',()=>{S.cards.forEach(c=>{c.stage=0;c.due=Date.now();c.reviews=0;});save();refreshAll();toast('已重設');});
+$('#clearAll').onclick=()=>confirmBox('刪除全部卡片後無法復原。建議先到「卡組」頁匯出備份。',()=>{S.cards=[];S.decks={};save();refreshAll();toast('已全部刪除');});
+
+/* ================= curve ================= */
+function drawCurve(){const W=340,Hh=200,L=34,R=10,T=12,B=30,pw=W-L-R,ph=Hh-T-B,maxD=31,x=d=>L+Math.sqrt(d/maxD)*pw,y=p=>T+(1-p/100)*ph;
+  const pts=[[0,100],[20/1440,58],[1/24,44],[9/24,36],[1,34],[2,28],[6,25],[31,21]];
+  const path='M'+pts.map(p=>x(p[0]).toFixed(1)+','+y(p[1]).toFixed(1)).join(' L');
+  const rev=[0,1,2,4,7,15,31];let s=.6,d2='';
+  for(let i=0;i<rev.length-1;i++){const a=rev[i],b=rev[i+1];for(let k=0;k<=24;k++){const t=a+(b-a)*k/24,pp=20+80*Math.exp(-(t-a)/s);d2+=(i||k?'L':'M')+x(t).toFixed(1)+','+y(pp).toFixed(1)+' ';}if(i<rev.length-2)d2+=`L${x(b).toFixed(1)},${y(100).toFixed(1)} `;s*=2.2;}
+  let g='';[0,25,50,75,100].forEach(p=>g+=`<line x1="${L}" x2="${W-R}" y1="${y(p)}" y2="${y(p)}" stroke="var(--line)"/><text x="${L-5}" y="${y(p)+3.5}" text-anchor="end">${p}%</text>`);
+  [[0,'0'],[1/24,'1時'],[1,'1天'],[2,'2天'],[7,'7天'],[15,'15天'],[31,'31天']].forEach(([d,l])=>g+=`<text x="${x(d)}" y="${Hh-10}" text-anchor="middle">${l}</text>`);
+  $('#curve').innerHTML=g+`<path d="${d2}" fill="none" stroke="var(--ok)" stroke-width="1.6" stroke-dasharray="4 3"/><path d="${path}" fill="none" stroke="var(--accent)" stroke-width="2.6" stroke-linejoin="round"/>`+pts.map(p=>`<circle cx="${x(p[0])}" cy="${y(p[1])}" r="3.2" fill="var(--raise)" stroke="var(--accent)" stroke-width="2"/>`).join('');}
+
+/* ================= boot ================= */
+function showIntro(){
+  S.set.intro=true;save();
+  modal(`<h3>歡迎使用念念</h3><p class="tiny muted" style="margin:0 0 12px">依艾賓浩斯遺忘曲線安排複習的記憶卡</p>
+   <ol class="steps"><li><b>加入卡片</b>到「卡組」挑一組，或貼上自己的內容；經文可整段貼上。</li>
+   <li><b>每天按「開始複習」</b>先回想，再翻面核對，然後誠實評分。</li>
+   <li><b>交給排程</b>記得的卡會隔更久才回來；忘了、模糊的卡，這一輪會再考，直到你記起來。想再背可用「自由練習」，不影響排程。</li></ol>
+   <div class="note">卡片與進度只存在這台裝置的瀏覽器，請定期匯出備份。本工具是學習輔助，詳細的使用方式與聲明在「說明」頁。</div>
+   <div class="row" style="justify-content:flex-end;margin-top:14px"><button class="btn" id="inHelp">看完整說明</button><button class="btn pri" id="inGo">開始使用</button></div>`,m=>{
+    m.querySelector('#inGo').onclick=close;m.querySelector('#inHelp').onclick=()=>{close();showHelp('use');};});
+}
+apply();setIcon();impOpts();refreshAll();renderMarket();
+if(BAD)setTimeout(()=>modal(`<h3>資料讀取失敗</h3><p>這台裝置上存的念念資料損壞，無法讀取。原始資料已另存一份副本，<b>目前暫停存檔</b>，以免蓋掉舊資料。</p><p class="tiny muted">如果有匯出過的 JSON 備份，到「卡組 → 匯入」貼上或選檔，選「取代全部」即可還原。</p><div class="row" style="justify-content:flex-end;margin-top:14px;flex-wrap:wrap"><button class="btn" id="bdN">先不要動</button><button class="btn pri" id="bdY">重新開始</button></div>`,m=>{m.querySelector('#bdN').onclick=close;m.querySelector('#bdY').onclick=()=>confirmBox('重新開始會用空白資料存檔（損壞的副本仍保留在瀏覽器裡），確定嗎？',()=>{BAD=false;save();toast('已重新開始');});}),400);
+else if(!S.set.intro)setTimeout(showIntro,400);
+if('serviceWorker' in navigator&&location.protocol==='https:'&&!/claude/.test(location.hostname))navigator.serviceWorker.register('sw.js').catch(()=>{});
+if(!synth)setTimeout(()=>toast('此瀏覽器不支援語音念讀，其他功能正常'),900);
+})();
+</script>
+</body>
+</html>
